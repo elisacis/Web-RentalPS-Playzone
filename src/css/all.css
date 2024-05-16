@@ -7,6 +7,7 @@
     --text-color: #222;
     --primary: #9b5d4f;
     --secondary: #f0f0f0;
+    --tertiary: #bebebe;
     --max-width: 1100px;
 }
 
@@ -46,11 +47,11 @@ header {
     position: absolute;
     width: 100%;
     z-index: 100;
-    color: white;
+    color: var(--text-color);
 }
 
 header a {
-    color: white;
+    color: var(--text-color);
 }
 
 header .wrap {
@@ -91,7 +92,7 @@ header nav .cart {
 }
 
 header nav .cart svg {
-    filter: brightness(88);
+    filter: brightness(0);
     height: 30px;
 }
 
@@ -111,11 +112,18 @@ header nav .cart svg {
         top: 0px;
         right: 0;
         margin: 75px 103px 0 0;
-        padding: 10px 0;
         display: grid;
         gap: 0;
         min-width: 200px;
         border-radius: 10px;
+        border: 2px solid var(--tertiary);
+        z-index: 100;
+    }
+    header nav .menu.show .menu-wrap {
+        position: relative;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
     }
     header nav .menu.show a {
         position: relative;
@@ -128,15 +136,17 @@ header nav .cart svg {
         background: var(--primary);
         color: var(--secondary);
     }
-    header nav .menu.show:before {
+    header nav .menu.show:after {
         content: "";
+        position: absolute;
         background: white;
         width: 15px;
         height: 15px;
-        position: absolute;
         top: -7px;
         right: 20px;
         transform: rotate(45deg);
+        border: 2px solid var(--tertiary);
+        z-index: -1;
     }
     header nav .mobile-menu {
         display: block;
