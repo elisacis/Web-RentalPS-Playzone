@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;700;900&display=swap');
 
 /* CSS Reset */
 
@@ -40,6 +41,7 @@ img {
 /* Header */
 
 header {
+    font-family: "Mukta", serif;
     padding: 30px;
     position: absolute;
     width: 100%;
@@ -81,57 +83,71 @@ header nav .menu a {
 
 header nav .mobile-menu {
     display: none;
+    cursor: pointer;
 }
 
-header nav svg {
+header nav .cart {
+    cursor: pointer;
+}
+
+header nav .cart svg {
     filter: brightness(88);
     height: 30px;
 }
 
-/* Section: Hero */
+/* Responsive */
 
-#hero {
-    background-color: rgb(123, 123, 123);
+@media screen and (max-width:480px){
+
 }
 
-#hero .bg {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 100%
+@media screen and (max-width:768px){
+    header nav .menu {
+        display: none;
+    }
+    header nav .menu.show {
+        position: absolute;
+        background: white;
+        top: 0px;
+        right: 0;
+        margin: 75px 103px 0 0;
+        padding: 10px 0;
+        display: grid;
+        gap: 0;
+        min-width: 200px;
+        border-radius: 10px;
+    }
+    header nav .menu.show a {
+        position: relative;
+        padding: 12px 20px 7px;
+        color: var(--text-color);
+        margin: 0;
+        transition: .3s all;
+    }
+    header nav .menu.show a:hover {
+        background: var(--primary);
+        color: var(--secondary);
+    }
+    header nav .menu.show:before {
+        content: "";
+        background: white;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: -7px;
+        right: 20px;
+        transform: rotate(45deg);
+    }
+    header nav .mobile-menu {
+        display: block;
+        
+    }
 }
 
-#hero .bg img {
-    width: 100%;
+@media screen and (max-width:1280px){
+    
 }
 
-#hero .wrap {
-    padding: 150px 30px;
-    max-width: var(--max-width);
-    margin: auto;
-    position: relative;
-}
-
-#hero .text {
-    text-align: center;
-    color: var(--secondary);
-}
-
-#hero .text h2 {
-    font-size: 225%;
-}
-
-#hero .text p.desc {
-    margin: 25px 0 50px;
-}
-
-#hero .text a.button {
-    backdrop-filter: blur(10px);
-    font-size: 110%;
-    color: #fff;
-    background: #ffffff3d;
-    display: inline-block;
-    padding: 15px 50px 10px;
-    border-radius: 10px;
-    border: 2px solid #fff;
+@media screen and (min-width:1281px){
+    
 }
