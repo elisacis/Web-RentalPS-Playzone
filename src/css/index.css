@@ -8,6 +8,11 @@ header a {
     color: #fff;
 }
 
+header .logo img {
+    height: 30px;
+    filter: brightness(88);
+}
+
 header nav .cart svg {
     filter: brightness(88);
 }
@@ -79,6 +84,12 @@ header nav .cart svg {
 
 @media screen and (max-width:1280px){
     
+}
+
+@media screen and (min-width:769px){
+    header nav .menu .menu-wrap a:hover {
+        color: var(--tertiary);
+    }
 }
 
 @media screen and (min-width:1281px){

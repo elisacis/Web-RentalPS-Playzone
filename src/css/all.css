@@ -5,6 +5,7 @@
 
 :root {
     --text-color: #222;
+    --text-soft: #696969;
     --primary: #9b5d4f;
     --secondary: #f0f0f0;
     --tertiary: #bebebe;
@@ -48,10 +49,11 @@ header {
     width: 100%;
     z-index: 100;
     color: var(--text-color);
+    user-select: none;
 }
 
 header a {
-    color: var(--text-color);
+    color: var(--text-soft);
 }
 
 header .wrap {
@@ -64,22 +66,25 @@ header .wrap {
 
 header .logo img {
     height: 30px;
-    filter: brightness(88);
 }
 
 header nav .wrap {
     display: flex;
-    gap: 20px;
+    gap: 40px;
 }
 
 header nav .menu {
     display: flex;
-    gap: 20px
+    gap: 35px;
 }
 
 header nav .menu a {
     margin-top: 5px;
     display: inline-block;
+}
+
+header nav .menu .menu-wrap a {
+    transition: .3s all;
 }
 
 header nav .mobile-menu {
@@ -94,6 +99,7 @@ header nav .cart {
 header nav .cart svg {
     filter: brightness(0);
     height: 30px;
+    width: auto;
 }
 
 /* Responsive */
@@ -111,10 +117,11 @@ header nav .cart svg {
         background: white;
         top: 0px;
         right: 0;
-        margin: 75px 103px 0 0;
+        margin: 75px 76px 0 0;
         display: grid;
         gap: 0;
         min-width: 200px;
+        max-width: 10%;
         border-radius: 10px;
         border: 2px solid var(--tertiary);
         z-index: 100;
@@ -124,13 +131,14 @@ header nav .cart svg {
         background: #fff;
         border-radius: 8px;
         overflow: hidden;
+        display: grid;
     }
     header nav .menu.show a {
         position: relative;
-        padding: 12px 20px 7px;
-        color: var(--text-color);
+        padding: 15px 25px;
         margin: 0;
         transition: .3s all;
+        color: var(--text-soft);
     }
     header nav .menu.show a:hover {
         background: var(--primary);
@@ -156,6 +164,17 @@ header nav .cart svg {
 
 @media screen and (max-width:1280px){
     
+}
+
+@media screen and (min-width:769px){
+    header nav .menu .menu-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    header nav .menu .menu-wrap a:hover {
+        color: var(--text-color);
+    }
 }
 
 @media screen and (min-width:1281px){
