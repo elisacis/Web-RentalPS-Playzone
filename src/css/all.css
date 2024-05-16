@@ -6,12 +6,12 @@
 :root {
     --text-color: #222;
     --text-soft: #696969;
-    --primary: #9b5d4f;
+    --primary: #8a6a4e;
+    --primary-hover: #6b5039;
     --secondary: #f0f0f0;
     --tertiary: #bebebe;
     --max-width: 1100px;
 }
-
 
 * {
     -webkit-box-sizing: border-box; 
@@ -28,6 +28,11 @@ body {
     font-size:16px;
     font-family: "Vesper Libre", serif;
     margin: 0;
+}
+
+input, textarea {
+    font-family: "Mukta", serif;
+    font-size: 80%;
 }
 
 a {
