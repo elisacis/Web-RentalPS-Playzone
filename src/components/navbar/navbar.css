@@ -1,0 +1,132 @@
+/* Header */
+
+header {
+  color: #fff;
+}
+
+header a {
+  color: #fff;
+}
+
+header .logo img {
+  height: 30px;
+  filter: brightness(88);
+}
+
+header nav .cart svg {
+  filter: brightness(88);
+  height: 30px;
+  width: auto;
+}
+
+header nav .cart {
+  cursor: pointer;
+}
+
+header nav .wrap {
+  display: flex;
+  gap: 40px;
+}
+
+header nav .menu {
+  display: flex;
+  gap: 35px;
+}
+
+header nav .menu a {
+  margin-top: 5px;
+  display: inline-block;
+}
+
+header nav .menu .menu-wrap a {
+  transition: 0.3s all;
+}
+
+header nav .mobile-menu {
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  header nav .menu {
+    display: none;
+  }
+  header nav .menu.show {
+    position: absolute;
+    background: white;
+    top: 0px;
+    right: 0;
+    margin: 75px 76px 0 0;
+    display: grid;
+    gap: 0;
+    min-width: 200px;
+    max-width: 10%;
+    border-radius: 10px;
+    border: 2px solid var(--tertiary);
+    z-index: 100;
+  }
+  header nav .menu.show .menu-wrap {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    display: grid;
+  }
+  header nav .menu.show a {
+    position: relative;
+    padding: 15px 25px;
+    margin: 0;
+    transition: 0.3s all;
+    color: var(--text-soft);
+  }
+  header nav .menu.show a:hover {
+    background: var(--primary);
+    color: var(--secondary);
+  }
+  header nav .menu.show:after {
+    content: "";
+    position: absolute;
+    background: white;
+    width: 15px;
+    height: 15px;
+    top: -7px;
+    right: 20px;
+    transform: rotate(45deg);
+    border: 2px solid var(--tertiary);
+    z-index: -1;
+  }
+  header nav .mobile-menu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (min-width: 769px) {
+  header nav .menu .menu-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  header nav .menu .menu-wrap a:hover {
+    color: var(--text-color);
+  }
+}
+@media screen and (max-width: 768px) {
+  header nav .menu {
+    display: none;
+  }
+  header nav .mobile-menu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (min-width: 769px) {
+  header nav .menu .menu-wrap a:hover {
+    color: var(--tertiary);
+  }
+}
