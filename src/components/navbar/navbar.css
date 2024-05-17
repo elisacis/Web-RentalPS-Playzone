@@ -2,6 +2,25 @@
 
 header {
   color: #fff;
+  position: fixed;
+}
+
+header.navbar.scrolled {
+  transition: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  background-color: #fff;
+  box-shadow: 0px 5px 7px 0px #0000007a;
+}
+header.navbar.scrolled a {
+  color: var(--primary);
+}
+header.navbar.scrolled .logo img {
+  filter: brightness(0);
+}
+header.navbar.scrolled nav .cart svg {
+  filter: none;
+  color: var(--primary);
 }
 
 header a {
