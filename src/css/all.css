@@ -135,6 +135,11 @@ footer .footer-social a:hover {
   border-color: var(--primary);
 }
 
+footer .attribution {
+  margin-top: 40px;
+  opacity: .7;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 480px) {
