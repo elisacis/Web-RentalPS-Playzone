@@ -6,6 +6,8 @@ header {
 }
 
 header.navbar.scrolled {
+  color: unset;
+  padding: 15px 25px;
   transition: all;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;

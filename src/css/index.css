@@ -2,7 +2,6 @@
 
 #hero {
   height: 100dvh;
-  /* background-color: rgb(123, 123, 123); */
 }
 
 #hero .bg {
@@ -21,10 +20,13 @@
 }
 
 #hero .wrap {
-  padding: 150px 30px;
+  height: calc(100% - 150px);
   max-width: var(--max-width);
   margin: auto;
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: 30px;
 }
 
 #hero .text {
@@ -117,7 +119,7 @@
   }
   #cup .mid img {
     position: sticky;
-    top: 30px;
+    top: 90px;
   }
 }
 
