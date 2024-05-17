@@ -1,11 +1,12 @@
 /* Section: Hero */
 
 #hero {
-  height: 100vh;
+  height: 100dvh;
   /* background-color: rgb(123, 123, 123); */
 }
 
 #hero .bg {
+  overflow: visible;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -16,7 +17,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: bottom;
 }
 
 #hero .wrap {
