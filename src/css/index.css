@@ -332,8 +332,6 @@ h2.sec-title {
   gap: 30px;
 }
 
-#location .map {}
-
 #location .map iframe {
   width: 100%;
   height: 100%;
