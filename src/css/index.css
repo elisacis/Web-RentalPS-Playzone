@@ -35,10 +35,11 @@
 }
 
 #hero .text h2 {
-  font-size: 225%;
+  font-size: var(--text-6xl);
 }
 
 #hero .text p.desc {
+  font-size: var(--text-xl);
   margin: 25px 0 50px;
 }
 
@@ -95,7 +96,7 @@
 }
 
 #cup .item-text p {
-  opacity: .8;
+  opacity: 0.8;
   font-size: 90%;
 }
 
@@ -107,7 +108,7 @@
 @media screen and (max-width: 768px) {
   #cup .wrap {
     position: relative;
-    grid-template-columns: .5fr 1fr;
+    grid-template-columns: 0.5fr 1fr;
     grid-template-rows: repeat(2, 1fr);
   }
   #cup .left {
