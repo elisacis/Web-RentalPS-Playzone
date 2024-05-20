@@ -43,7 +43,7 @@ h2.sec-title {
 }
 
 #hero .text h2 {
-  font-size: var(--text-6xl);
+  font-size: var(--text-5xl);
 }
 
 #hero .text p.desc {
@@ -155,7 +155,7 @@ h2.sec-title {
   margin: auto;
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 15rem));
 }
 
 #best .more {
