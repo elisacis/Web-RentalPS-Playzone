@@ -35,3 +35,27 @@ tabItems.forEach((tabItem) => {
     });
   });
 });
+
+// Ambil semua elemen dengan class ".product"
+const products = document.querySelectorAll('.product');
+
+// Loop melalui setiap elemen produk
+products.forEach(product => {
+  // Tambahkan event listener untuk setiap elemen produk
+  product.addEventListener('click', () => {
+    // Duplikat isi elemen produk yang diklik
+    const clonedContent = product.cloneNode(true);
+    
+    // Dapatkan elemen popup
+    const popup = document.querySelector('.popup');
+    
+    // Bersihkan isi elemen popup sebelumnya (jika ada)
+    popup.innerHTML = '';
+    
+    // Tambahkan kloned konten ke dalam elemen popup
+    popup.appendChild(clonedContent);
+    
+    // Tambahkan class "show" ke elemen popup
+    popup.classList.add('show');
+  });
+});
