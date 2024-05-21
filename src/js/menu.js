@@ -145,18 +145,19 @@ function updatePrice(quantity) {
   const sizeSelect = document.querySelector('.popup .size select');
   const calculateTotalPrice = () => {
     let multiplier = 1;
-    if (sizeSelect.value === 'Medium') {
+    if (sizeSelect && sizeSelect.value === 'Medium') {
       multiplier = 1.25;
-    } else if (sizeSelect.value === 'Large') {
+    } else if (sizeSelect && sizeSelect.value === 'Large') {
       multiplier = 1.5;
     }
     const totalPrice = price * quantity * multiplier;
     priceElement.textContent = 'Rp ' + totalPrice.toLocaleString('id-ID');
   };
-
-  sizeSelect.addEventListener('change', calculateTotalPrice);
+  if (sizeSelect) {
+    sizeSelect.addEventListener('change', calculateTotalPrice);
+  }
   calculateTotalPrice();
-};
+}
 
 function fadeOut(el) {
   el.style.opacity = 1;
