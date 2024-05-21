@@ -81,7 +81,7 @@ beforeHTML('.price', `
       <span>Amount</span>
       <div class="number">
         <div class="minus" onclick="decreaseValue()"><i class="fas fa-minus"></i></div>
-        <div class="value"><input id="myInput" value="1"/></div>
+        <div class="value"><input id="product-amount" value="1"/></div>
         <div class="plus" onclick="increaseValue()"><i class="fas fa-plus"></i></div>
       </div>
   </div>
@@ -125,9 +125,9 @@ appendHTML('.product-wrap .sugar', `
 Array.from(document.getElementsByClassName('price')).forEach(e => e.setAttribute('value', e.textContent.replace('Rp', '').replace(/\s/g, '').replace(/\./g, '')));
 
 function decreaseValue() {
-  const inputElement = document.getElementById('myInput');
+  const inputElement = document.getElementById('product-amount');
   let currentValue = parseInt(inputElement.value);
-  if (currentValue > 0) {
+  if (currentValue > 1) {
     currentValue--;
     inputElement.value = currentValue;
     updatePrice(currentValue);
@@ -135,7 +135,7 @@ function decreaseValue() {
 }
 
 function increaseValue() {
-  const inputElement = document.getElementById('myInput');
+  const inputElement = document.getElementById('product-amount');
   let currentValue = parseInt(inputElement.value);
   currentValue++;
   inputElement.value = currentValue;
@@ -143,7 +143,7 @@ function increaseValue() {
 };
 
 function stillValue() {
-  const inputElement = document.getElementById('myInput');
+  const inputElement = document.getElementById('product-amount');
   let currentValue = parseInt(inputElement.value);
   inputElement.value = currentValue;
   updatePrice(currentValue);
@@ -153,7 +153,6 @@ function updatePrice(quantity) {
   const priceElement = document.querySelector('.price');
   const price = parseInt(priceElement.getAttribute('value'));
   const sizeSelect = document.querySelector('.popup .size select');
-
   const calculateTotalPrice = () => {
     let multiplier = 1;
     if (sizeSelect.value === 'Medium') {
