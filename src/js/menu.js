@@ -36,49 +36,158 @@ tabItems.forEach((tabItem) => {
   });
 });
 
-
-
-// Ambil semua elemen dengan class ".product"
 const products = document.querySelectorAll('.product');
 
-// Loop melalui setiap elemen produk
 products.forEach(product => {
-  // Tambahkan event listener untuk setiap elemen produk
   product.addEventListener('click', () => {
-    // Duplikat isi elemen produk yang diklik
     const clonedContent = product.cloneNode(true);
     
-    // Dapatkan elemen popup
     const popup = document.querySelector('.popup');
+    const ov = document.querySelector('.overlay');
     
-    // Bersihkan isi elemen popup sebelumnya (jika ada)
     popup.innerHTML = '';
     
-    // Tambahkan kloned konten ke dalam elemen popup
     popup.appendChild(clonedContent);
     
-    // Tambahkan class "show" ke elemen popup
     popup.classList.add('show');
+    ov.classList.add('show');
+
+    fadeIn(document.querySelector('.overlay'));
   });
 });
 
 function closePopup() {
-  var popup = document.querySelector('.popup');
-  popup.classList.remove('show');
+  document.querySelector('.popup').classList.remove('show');
+  document.querySelector('.overlay').classList.remove('show');
+  fadeOut(document.querySelector('.overlay'));
 }
 
-// Temukan semua elemen dengan kelas "product-wrap"
-var productWraps = document.querySelectorAll('.product-wrap');
+function appendHTML(selector, html) {
+  var elements = document.querySelectorAll(selector);
+  elements.forEach(function(element) {
+      element.innerHTML += html;
+  });
+}
 
-// Iterasi melalui setiap elemen "product-wrap"
-productWraps.forEach(function(productWrap) {
-    // Tambahkan HTML ke elemen "product-wrap" saat ini
-    productWrap.innerHTML += `
-        <div class="amount">
-            <span>Amount</span>
-            <input type="number" value="1" min="1"/>
-        </div>
-        <div class="add"><span>Add to cart</span><i class="fas fa-cart-plus"></i></div>
-        <div class="close-pop" onclick="closePopup()"><i class="fas fa-times"></i></div>
-    `;
-});
+function beforeHTML(selector, html) {
+  var elements = document.querySelectorAll(selector);
+  elements.forEach(function(element) {
+    element.insertAdjacentHTML('beforebegin', html);
+  });
+}
+
+beforeHTML('.price', `
+  <div class="amount">
+      <span>Amount</span>
+      <div class="number">
+        <div class="minus" onclick="decreaseValue()"><i class="fas fa-minus"></i></div>
+        <div class="value"><input id="myInput" value="1"/></div>
+        <div class="plus" onclick="increaseValue()"><i class="fas fa-plus"></i></div>
+      </div>
+  </div>
+`);
+
+appendHTML('.product-wrap', `
+  <div class="add"><span>Add to cart</span><i class="fas fa-cart-plus"></i></div>
+  <div class="close-pop" onclick="closePopup()"><i class="fas fa-times"></i></div>
+`);
+
+appendHTML('.product-wrap .size', `
+  <span>Size</span>
+  <select onchange="stillValue()">
+      <option disabled='' selected=''>Select size</option>
+      <option>Regular</option>
+      <option>Medium</option>
+      <option>Large</option>
+  </select>
+`);
+
+appendHTML('.product-wrap .type', `
+  <span>Ice</span>
+  <select>
+      <option disabled='' selected=''>Select ice</option>
+      <option>Less</option>
+      <option>Normal</option>
+      <option>Extra</option>
+  </select>
+`);
+
+appendHTML('.product-wrap .sugar', `
+  <span>Sugar</span>
+  <select>
+      <option disabled='' selected=''>Select sugar</option>
+      <option>Less</option>
+      <option>Normal</option>
+      <option>Extra</option>
+  </select>
+`);
+
+Array.from(document.getElementsByClassName('price')).forEach(e => e.setAttribute('value', e.textContent.replace('Rp', '').replace(/\s/g, '').replace(/\./g, '')));
+
+function decreaseValue() {
+  const inputElement = document.getElementById('myInput');
+  let currentValue = parseInt(inputElement.value);
+  if (currentValue > 0) {
+    currentValue--;
+    inputElement.value = currentValue;
+    updatePrice(currentValue);
+  };
+}
+
+function increaseValue() {
+  const inputElement = document.getElementById('myInput');
+  let currentValue = parseInt(inputElement.value);
+  currentValue++;
+  inputElement.value = currentValue;
+  updatePrice(currentValue);
+};
+
+function stillValue() {
+  const inputElement = document.getElementById('myInput');
+  let currentValue = parseInt(inputElement.value);
+  inputElement.value = currentValue;
+  updatePrice(currentValue);
+};
+
+function updatePrice(quantity) {
+  const priceElement = document.querySelector('.price');
+  const price = parseInt(priceElement.getAttribute('value'));
+  const sizeSelect = document.querySelector('.popup .size select');
+
+  const calculateTotalPrice = () => {
+    let multiplier = 1;
+    if (sizeSelect.value === 'Medium') {
+      multiplier = 1.1;
+    } else if (sizeSelect.value === 'Large') {
+      multiplier = 1.2;
+    }
+    const totalPrice = price * quantity * multiplier;
+    priceElement.textContent = 'Rp ' + totalPrice.toLocaleString('id-ID');
+  };
+
+  sizeSelect.addEventListener('change', calculateTotalPrice);
+  calculateTotalPrice();
+};
+
+function fadeOut(el) {
+  el.style.opacity = 1;
+  (function fade() {
+      if ((el.style.opacity -= .07) < 0) {
+          el.style.display = "none";
+      } else {
+          requestAnimationFrame(fade);
+      }
+  })();
+};
+
+function fadeIn(el, display) {
+  el.style.opacity = 0;
+  el.style.display = display || "block";
+  (function fade() {
+      var val = parseFloat(el.style.opacity);
+      if (!((val += .07) > 1)) {
+          el.style.opacity = val;
+          requestAnimationFrame(fade);
+      }
+  })();
+};
