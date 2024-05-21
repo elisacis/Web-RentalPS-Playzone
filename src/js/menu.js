@@ -1,57 +1,49 @@
-// Mengambil elemen-elemen yang diperlukan
-const tabItems = document.querySelectorAll('.tab p');
-const productItems = document.querySelectorAll('.product');
+var body = document.querySelector('body');
 
-// Tambahkan event listener untuk setiap tab item
-tabItems.forEach((tabItem) => {
-  tabItem.addEventListener('click', (event) => {
-    event.preventDefault(); // Mencegah perilaku default
+document.querySelector('.tab').innerHTML = `<p class="all">All Menu</p>${[...new Set([...document.querySelectorAll('.category')].map(c=>`<p class="${c.textContent.toLowerCase().replace(' ','')}">${c.textContent}</p>`))].join('')}`;
 
-    // Hilangkan class 'active' dari semua tab items
-    tabItems.forEach((item) => {
-      item.classList.remove('active');
-    });
+const products = document.querySelectorAll('.product');
 
-    // Tambahkan class 'active' pada tab item yang diklik
-    tabItem.classList.add('active');
+for (var i = 0; i < products.length; i++) {
+  var product = products[i];
+  var category = product.getElementsByClassName('category')[0];
+  var categoryText = category.innerText.toLowerCase().replace(' ', '');
+  product.classList.add(categoryText);
+}
 
-    // Dapatkan kategori yang sesuai dengan tab item yang diklik
-    const category = tabItem.textContent.toLowerCase();
+var tabs = document.querySelectorAll('.tab > p');
 
-    // Tampilkan atau sembunyikan produk berdasarkan kategori
-    productItems.forEach((productItem) => {
-      if (category === 'all') {
-        // Jika kategori adalah 'all', tampilkan semua produk
-        productItem.style.display = 'block';
-      } else {
-        // Jika kategori bukan 'all', sembunyikan produk yang tidak sesuai dengan kategori
-        const productCategory = productItem.querySelector('.category').textContent.toLowerCase();
-        if (productCategory === category) {
-          productItem.style.display = 'block';
-        } else {
-          productItem.style.display = 'none';
-        }
-      }
-    });
+tabs.forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    if (!this.classList.contains('active')) {
+      var tabClass = this.className;
+      tabs.forEach(function(tab) {
+        tab.classList.remove('active');
+      });
+      this.classList.add('active');
+      Array.from(products).forEach(function(product) {
+        var productClass = product.classList;
+        var shouldDisplay = tabClass === 'all' || productClass.contains(tabClass);
+
+        product.style.display = shouldDisplay ? 'block' : 'none';
+      });
+    }
   });
 });
 
-const products = document.querySelectorAll('.product');
+// Mengatur tab "All Menu" sebagai tab default yang aktif
+tabs[0].classList.add('active');
 
 products.forEach(product => {
   product.addEventListener('click', () => {
     const clonedContent = product.cloneNode(true);
-    
     const popup = document.querySelector('.popup');
     const ov = document.querySelector('.overlay');
-    
     popup.innerHTML = '';
-    
     popup.appendChild(clonedContent);
-    
     popup.classList.add('show');
     ov.classList.add('show');
-
+    body.classList.add('ov');
     fadeIn(document.querySelector('.overlay'));
   });
 });
@@ -60,6 +52,7 @@ function closePopup() {
   document.querySelector('.popup').classList.remove('show');
   document.querySelector('.overlay').classList.remove('show');
   fadeOut(document.querySelector('.overlay'));
+  body.classList.remove('ov');
 }
 
 function appendHTML(selector, html) {
@@ -94,9 +87,8 @@ appendHTML('.product-wrap', `
 
 appendHTML('.product-wrap .size', `
   <span>Size</span>
-  <select onchange="stillValue()">
-      <option disabled='' selected=''>Select size</option>
-      <option>Regular</option>
+  <select class="fixed" onchange="stillValue()">
+      <option selected=''>Regular</option>
       <option>Medium</option>
       <option>Large</option>
   </select>
@@ -105,9 +97,8 @@ appendHTML('.product-wrap .size', `
 appendHTML('.product-wrap .type', `
   <span>Ice</span>
   <select>
-      <option disabled='' selected=''>Select ice</option>
       <option>Less</option>
-      <option>Normal</option>
+      <option selected=''>Normal</option>
       <option>Extra</option>
   </select>
 `);
@@ -115,9 +106,8 @@ appendHTML('.product-wrap .type', `
 appendHTML('.product-wrap .sugar', `
   <span>Sugar</span>
   <select>
-      <option disabled='' selected=''>Select sugar</option>
       <option>Less</option>
-      <option>Normal</option>
+      <option selected=''>Normal</option>
       <option>Extra</option>
   </select>
 `);
@@ -156,9 +146,9 @@ function updatePrice(quantity) {
   const calculateTotalPrice = () => {
     let multiplier = 1;
     if (sizeSelect.value === 'Medium') {
-      multiplier = 1.1;
+      multiplier = 1.25;
     } else if (sizeSelect.value === 'Large') {
-      multiplier = 1.2;
+      multiplier = 1.5;
     }
     const totalPrice = price * quantity * multiplier;
     priceElement.textContent = 'Rp ' + totalPrice.toLocaleString('id-ID');
@@ -171,7 +161,7 @@ function updatePrice(quantity) {
 function fadeOut(el) {
   el.style.opacity = 1;
   (function fade() {
-      if ((el.style.opacity -= .07) < 0) {
+      if ((el.style.opacity -= .08) < 0) {
           el.style.display = "none";
       } else {
           requestAnimationFrame(fade);
@@ -184,7 +174,7 @@ function fadeIn(el, display) {
   el.style.display = display || "block";
   (function fade() {
       var val = parseFloat(el.style.opacity);
-      if (!((val += .07) > 1)) {
+      if (!((val += .08) > 1)) {
           el.style.opacity = val;
           requestAnimationFrame(fade);
       }
