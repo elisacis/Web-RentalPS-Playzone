@@ -96,19 +96,21 @@ margin-top: 12px;
 max-height: 50px;
 }
 
-.product .category ~ *:not(.add), .product .add {
+.product .category ~ *:not(.add) {
 transition: .3s all;
 overflow: hidden;
 max-height: 0;
 padding: 0;
 }
 
-.popup .product i.fas {
+.popup .product .close-pop {
   position: absolute;
   top: 10px;
   right: 25px;
   font-size: var(--text-xl);
   cursor: pointer;
+  max-height: unset;
+
 }
 
 .popup .product .add {

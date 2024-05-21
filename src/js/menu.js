@@ -36,6 +36,8 @@ tabItems.forEach((tabItem) => {
   });
 });
 
+
+
 // Ambil semua elemen dengan class ".product"
 const products = document.querySelectorAll('.product');
 
@@ -58,4 +60,25 @@ products.forEach(product => {
     // Tambahkan class "show" ke elemen popup
     popup.classList.add('show');
   });
+});
+
+function closePopup() {
+  var popup = document.querySelector('.popup');
+  popup.classList.remove('show');
+}
+
+// Temukan semua elemen dengan kelas "product-wrap"
+var productWraps = document.querySelectorAll('.product-wrap');
+
+// Iterasi melalui setiap elemen "product-wrap"
+productWraps.forEach(function(productWrap) {
+    // Tambahkan HTML ke elemen "product-wrap" saat ini
+    productWrap.innerHTML += `
+        <div class="amount">
+            <span>Amount</span>
+            <input type="number" value="1" min="1"/>
+        </div>
+        <div class="add"><span>Add to cart</span><i class="fas fa-cart-plus"></i></div>
+        <div class="close-pop" onclick="closePopup()"><i class="fas fa-times"></i></div>
+    `;
 });
