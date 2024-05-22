@@ -45,7 +45,12 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Vesper Libre", serif;
 }
 
@@ -96,7 +101,7 @@ header .header-wrap {
 }
 
 header .mobile-nav {
-  display:none
+  display: none
 }
 
 header .logo img {
@@ -109,7 +114,7 @@ header nav .nav-wrap {
   align-content: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 0 40px;
   font-size: var(--text-lg);
 }
 
@@ -147,8 +152,7 @@ footer .footer-wrap {
   gap: 30px;
 }
 
-footer a {
-}
+footer a {}
 
 footer .left {
   text-align: left;
@@ -196,7 +200,17 @@ footer .middle .social {
   margin-top: 10px;
 }
 
-footer .middle .social a {color: white;width: 40px;height: 40px;display: flex;border: 1px solid #ffffff57;align-items: center;justify-content: center;border-radius: 100%;transition: .3s all;}
+footer .middle .social a {
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border: 1px solid #ffffff57;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  transition: .3s all;
+}
 
 footer .middle .social a:hover {
   background: white;
@@ -234,41 +248,64 @@ footer .right .work-hours p span:first-child {
 @media screen and (max-width: 768px) {
   header {
     padding: 0;
-}
-header .header-wrap {
+  }
+
+  header .header-wrap {
     padding: 0 30px;
     background: #fff;
-}
+  }
 
-header .mobile-nav {
-  width: 30px;
-  cursor: pointer;
-  height: 30px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+  header .mobile-nav {
+    width: 30px;
+    cursor: pointer;
+    height: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-header .logo {
+  header .logo {
     text-align: center;
-}
+  }
 
-header nav {
+  header nav {
     transition: .3s all;
     position: fixed;
-    top: 0;
+    top: -50%;
     width: 100%;
     left: 0;
     background: #8a6a4e;
     z-index: -1;
-}
+  }
 
-header nav .nav-wrap a {
+  header nav .nav-wrap a {
     padding: 10px 0;
     color: white;
-}
-header nav.show {
-    top: 60px;
-}
-}
+  }
 
+  header nav.show {
+    top: 60px;
+  }
+
+  footer .footer-wrap {
+    gap: 0;
+    grid-template-columns: 1fr;
+  }
+
+  footer .left,
+  footer .right {
+    text-align: left;
+    order: 1;
+    padding: 30px 0;
+  }
+
+  footer .middle {
+    order: 2;
+    text-align: left;
+    margin: 0 -30px;
+  }
+
+  footer .middle .social {
+    justify-content: left;
+  }
+}
