@@ -144,18 +144,17 @@ h2.sec-title {
 
 /* Recent & Best */
 
-#recent,
 #best {
   padding: 30px;
 }
 
-#recent .wrap,
 #best .wrap {
   max-width: 1100px;
-  margin: auto;
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 15rem));
+  margin: 60px auto 0;
+}
+
+#best .more-wrap {
+  text-align: center;
 }
 
 #best .more {
@@ -163,7 +162,7 @@ h2.sec-title {
   transition: 0.1s all;
   font-family: "Vesper Libre", serif;
   text-align: center;
-  display: block;
+  display: inline-block;
   margin: 30px auto 0;
   font-size: 1rem;
   padding: 10px 40px 8px;
@@ -178,79 +177,8 @@ h2.sec-title {
   color: var(--text-color);
 }
 
-/* Product */
-
-.product {
-  border: 1px solid var(--tertiary);
-  border-radius: 10px;
-  text-align: center;
-  display: grid;
-  transition: 0.3s all;
-}
-
-.product:hover {
-  background: var(--primary);
-  color: white;
-}
-
-.product .img {
-  padding: 20px;
-  margin-bottom: 15px;
-}
-
-.product .img img {
-  width: 70%;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-}
-
-.product .category {
-  font-size: 0.7rem;
-  margin: 0 10px;
-  opacity: 0.8;
-}
-
-.product .name {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 7px 10px;
-}
-
-.product .price {
-  margin-bottom: 10px;
-}
-
-.product .action {
-  cursor: pointer;
-  display: flex;
-  margin: 15px 25px 20px;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  align-items: center;
-}
-
-.product .action .add {
-  display: flex;
-  gap: 8px;
-  line-height: 01;
-  align-items: center;
-}
-
-.product .action .add i {
-  margin-top: -4px;
-}
-
-.product .action .fav {
-  font-size: 1.3rem;
-}
-
-.product .action .fav:hover {
-  color: white;
-}
-
-.product .action .fav:hover i:before {
-  font-weight: bold;
+#best .tab {
+  display: none;
 }
 
 /* Testimonials */

@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Hero button smooth scroll to #recent
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector("#hero .text .button").addEventListener("click", function() {
-      var targetElement = document.querySelector("#recent");
+      var targetElement = document.querySelector("#best");
       var targetOffset = targetElement.offsetTop - 60;
       window.scrollTo({
         top: targetOffset,
@@ -97,3 +97,25 @@ testimonials.forEach(function(testimonial, index) {
   navigationContainer.appendChild(button);
 });
 showTestimonial(currentIndex);
+
+// Ambil konten dari menu.html
+fetch('menu.html')
+  .then(response => response.text())
+  .then(data => {
+    const menuWrapElement = new DOMParser().parseFromString(data, 'text/html').querySelector('.menu-wrap');
+    const bestProductElements = Array.from(menuWrapElement.querySelectorAll('.product.best'));
+    const indexContainer = document.getElementById('index-container');
+    bestProductElements.forEach(product => {
+      indexContainer.appendChild(product);
+    });
+  })
+  .catch(error => {
+    console.error('Terjadi kesalahan:', error);
+  });
+
+setTimeout(() => {
+  const scriptElement = document.createElement('script');
+  scriptElement.src = 'src/js/menu.js';
+  document.body.appendChild(scriptElement);
+}, 5000);
+
