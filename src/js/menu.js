@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to load navbar HTML
   function loadNavbar() {
-    fetch("src/components/navbar/navbar.html")
+    fetch("./src/components/navbar/navbar.html")
       .then((response) => response.text())
       .then((data) => {
         document.getElementById("navbar").innerHTML = data;

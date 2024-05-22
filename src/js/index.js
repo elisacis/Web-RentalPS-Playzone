@@ -59,8 +59,7 @@ testimonials.forEach(function(testimonial, index) {
 });
 showTestimonial(currentIndex);
 
-// Ambil konten dari menu.html
-fetch('menu.html')
+fetch('./menu.html', {mode: 'no-cors'})
   .then(response => response.text())
   .then(data => {
     const menuWrapElement = new DOMParser().parseFromString(data, 'text/html').querySelector('.menu-wrap');
@@ -70,13 +69,10 @@ fetch('menu.html')
       indexContainer.appendChild(product);
     });
   })
-  .catch(error => {
-    console.error('Terjadi kesalahan:', error);
-  });
 
 setTimeout(() => {
   const scriptElement = document.createElement('script');
-  scriptElement.src = 'src/js/menu.js';
+  scriptElement.src = './src/js/menu.js';
   document.body.appendChild(scriptElement);
 }, 5000);
 
