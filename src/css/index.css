@@ -107,7 +107,7 @@ h2.sec-title {
   margin: auto;
   display: grid;
   gap: 40px;
-  grid-template-columns: 2.5fr 1fr 2.5fr;
+  grid-template-columns: 2.5fr 1.25fr 2.5fr;
 }
 
 #cup .left {
