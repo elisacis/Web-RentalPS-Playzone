@@ -1,29 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to load navbar HTML
-  function loadNavbar() {
-    fetch("src/components/navbar/navbar.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("navbar").innerHTML = data;
-        addActiveClass(); // Add active class to current page link
-        setupToggleButton(); // Setup toggle button click event
-        setupScrollBehavior(); // Setup scroll behavior
-      })
-      .catch((error) => console.log("Error loading navbar:", error));
-  }
-
-  // Function to add active class to current page link
-  function addActiveClass() {
-    var currentLocation = window.location.href;
-    var navLinks = document.querySelectorAll("#navbar a");
-
-    navLinks.forEach(function (link) {
-      if (link.href === currentLocation) {
-        link.classList.add("active");
-      }
-    });
-  }
-
   function setupToggleButton() {
     const mobileMenu = document.querySelector("header nav .mobile-menu");
     const menu = document.querySelector("header nav .menu");
@@ -37,26 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
-  function setupScrollBehavior() {
-    const header = document.querySelector("header");
-    window.onscroll = function () {
-      if (document.body.scrollTop >= 200) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    };
-  }
-
-  // Load the navbar when the DOM is ready
-  loadNavbar();
 });
 
 // Hero button smooth scroll to #recent
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector("#hero .text .button").addEventListener("click", function() {
-      var targetElement = document.querySelector("#recent");
+      var targetElement = document.querySelector("#best");
       var targetOffset = targetElement.offsetTop - 60;
       window.scrollTo({
         top: targetOffset,
@@ -97,3 +58,21 @@ testimonials.forEach(function(testimonial, index) {
   navigationContainer.appendChild(button);
 });
 showTestimonial(currentIndex);
+
+fetch('./menu.html', {mode: 'no-cors'})
+  .then(response => response.text())
+  .then(data => {
+    const menuWrapElement = new DOMParser().parseFromString(data, 'text/html').querySelector('.menu-wrap');
+    const bestProductElements = Array.from(menuWrapElement.querySelectorAll('.product.best'));
+    const indexContainer = document.getElementById('index-container');
+    bestProductElements.forEach(product => {
+      indexContainer.appendChild(product);
+    });
+  })
+
+setTimeout(() => {
+  const scriptElement = document.createElement('script');
+  scriptElement.src = './src/js/menu.js';
+  document.body.appendChild(scriptElement);
+}, 5000);
+
