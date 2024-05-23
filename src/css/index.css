@@ -5,7 +5,7 @@ section:not(#navbar, #hero) {
   padding: 0 30px;
 }
 
-h2.sec-title {
+section h2.sec-title {
   text-align: center;
   padding: 0 30px 30px;
   font-size: 2.3rem;
@@ -39,7 +39,7 @@ h2.sec-title {
 
 #hero {
   padding: min(30%, 120px) 10px;
-  background: url(/assets/Hero-bg.png);
+  background: url(../../assets/Hero-bg.png);
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
