@@ -1,111 +1,68 @@
+section:not(#navbar, #hero) {
+  margin-bottom: 60px;
+  padding: 0 30px;
+}
+
+section .wrap {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+section h2.sec-title {
+  text-align: center;
+  padding: 0 30px 30px;
+  font-size: 2.3rem;
+}
+
+/* Section: Hero */
+
 #hero {
-  width: 100%;
-  height: 100dvh;
+  padding: min(30%, 120px) 10px min(30%, 60px);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 60px;
 }
 
-#hero .bg {
-  overflow: visible;
-  width: 100%;
+#hero:before {
+  content: "";
   position: absolute;
-  bottom: 0;
+  left: 0;
+  top: 0;
+  z-index: -1;
   height: 100%;
-}
-
-#hero .bg img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: bottom;
+  background: url(../../assets/site/About-bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(0.5) blur(3px);
 }
 
 #hero .wrap {
-  height: calc(100% - 150px);
+  height: auto;
   max-width: var(--max-width);
-  margin: auto;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
   padding: 30px;
 }
 
 #hero .text {
+  text-shadow: 0 0 6px black;
   text-align: center;
   color: var(--secondary);
 }
 
 #hero .text h2 {
-  font-size: var(--text-7xl);
+  font-size: var(--text-5xl);
 }
 
 #hero .text p.desc {
-  font-size: var(--text-xl);
-  /* margin: 25px 0 50px; */
+  font-size: var(--text-2xl);
+  margin: 0;
 }
 
-#hero .text a.button {
-  backdrop-filter: blur(10px);
-  font-size: 110%;
-  color: #fff;
-  background: #ffffff3d;
-  display: inline-block;
-  padding: 15px 50px 10px;
-  border-radius: 10px;
-  border: 2px solid #fff;
-}
-
-#our-story {
-  padding: 30px;
-  position: relative;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#our-story .wrap {
-  max-width: var(--max-width);
-  height: auto;
-  padding: 10rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#our-story .wrap .text {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-#our-story .wrap .text h2 {
-  font-size: var(--text-5xl);
-  color: var(--text-color);
-}
-
-#our-story .wrap .text .paragraph {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-#our-story .wrap .text p {
-  font-size: var(--text-base);
-  text-align: center;
-  color: var(--primary);
-}
-
-#our-story img {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: -10;
-}
+/* Section Offers */
 
 #offers {
   width: 100%;
@@ -127,7 +84,6 @@
 #offers .wrap {
   max-width: var(--max-width);
   height: 100%;
-  /* padding: 10rem; */
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -136,17 +92,18 @@
   color: #fff;
 }
 
-#offers .wrap h3 {
+#offers h3 {
   width: 45%;
   text-align: end;
   font-size: var(--text-4xl);
 }
 
-#offers .wrap p {
+#offers p {
   width: 45%;
   text-align: end;
   font-size: var(--text-xl);
 }
+/* Section Motto */
 
 #motto {
   width: 100%;
@@ -160,9 +117,8 @@
 #motto .wrap {
   max-width: var(--max-width);
   height: 100%;
-  padding: 7.5rem 0;
   display: flex;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 #motto .wrap > div:first-child {
@@ -185,30 +141,37 @@
 }
 
 #motto .wrap > div:first-child::before {
-  content: "‟";
-  font-size: 15em; /* Adjust the size as needed */
-  font-weight: bold; /* Optional: make it bold */
+  content: '"';
+  font-size: 15em;
+  font-weight: bold;
+  font-size: 15em;
+  font-weight: bold;
   position: absolute;
   font-family: "Vesper Libre";
-  top: -50px;
-  left: 10px;
+  top: -70px;
+  left: 0;
   color: var(--primary);
 }
+
 #motto .wrap > div:first-child::after {
-  content: "‟";
-  font-size: 15em; /* Adjust the size as needed */
-  font-weight: bold; /* Optional: make it bold */
+  content: '"';
+  font-size: 15em;
+  font-weight: bold;
+  font-size: 15em;
+  font-weight: bold;
   line-height: 1;
   position: absolute;
-  bottom: -50px;
+  bottom: -100px;
   right: 10px;
   color: var(--primary);
+  font-family: "Vesper Libre", serif;
 }
 
 #motto .wrap > div:last-child {
   width: 45%;
   height: 30rem;
 }
+
 #motto .wrap > div:last-child img {
   width: 100%;
   height: 100%;
@@ -217,72 +180,7 @@
   border-radius: 1rem;
 }
 
-#values {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#values .wrap {
-  max-width: var(--max-width);
-  height: 100%;
-  padding: 5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-}
-
-#values .wrap h2 {
-  width: 100%;
-  text-align: center;
-  font-size: var(--text-5xl);
-}
-
-#values .wrap .cards {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#values .wrap .cards .card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  color: var(--text-color);
-}
-
-#values .wrap .cards .card div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-#values .wrap .cards .card h4 {
-  width: 100%;
-  text-align: center;
-  font-size: var(--text-2xl);
-}
-#values .wrap .cards .card p {
-  width: 80%;
-  text-align: center;
-  font-size: var(--text-xl);
-  line-height: normal;
-}
+/* Section Testimonial */
 
 #testimonial {
   width: 100%;
@@ -294,22 +192,21 @@
 }
 
 #testimonial .wrap {
-  max-width: var(--max-width);
+  width: 100%;
+  width: 100%;
   height: 100%;
-  padding: 5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
 }
 
-#testimonial .wrap h2 {
+#testimonial h2 {
   width: 100%;
   text-align: center;
-  font-size: var(--text-5xl);
 }
 
-#testimonial .wrap .slider {
+#testimonial .slider {
+  overflow: hidden;
   position: relative;
   width: 100%;
   height: 100%;
@@ -318,21 +215,22 @@
   justify-content: center;
 }
 
-#testimonial .wrap .slider .slider-wrapper {
+#testimonial .slider .slider-wrapper {
   display: flex;
   width: 100%;
   transition: transform 0.5s ease;
 }
 
-#testimonial .wrap .slider .slider-wrapper .slide {
+#testimonial .slider .slider-wrapper .slide {
   display: flex;
   min-width: 100%;
   box-sizing: border-box;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
+  gap: 2rem;
 }
 
-#testimonial .wrap .slider .slider-wrapper .slide .card {
+#testimonial .slider .slider-wrapper .slide .card {
   background: #f4eae3;
   border-radius: 8px;
   padding: 2rem;
@@ -344,29 +242,38 @@
   justify-content: space-between;
 }
 
-#testimonial .wrap .slider .slider-wrapper .slide .card p {
+#testimonial .slider .slider-wrapper .slide .card p {
   font-size: var(--text-xl);
   line-height: normal;
 }
 
-#testimonial .wrap .slider .slider-wrapper .slide .card h5 {
+#testimonial .slider .slider-wrapper .slide .card h5 {
   font-size: var(--text-xl);
   line-height: normal;
+  margin-top: 10px;
+  margin-top: 10px;
 }
 
-#testimonial .wrap .slider .slider-wrapper .slide .card::after {
-  content: "‟";
-  font-size: 15em; /* Adjust the size as needed */
-  font-weight: bold; /* Optional: make it bold */
-  line-height: 1;
+#testimonial .slider .slider-wrapper .slide .card::after {
+  content: '"';
+  font-size: 7rem;
+  font-weight: bold;
+  line-height: 0;
+  font-size: 7rem;
+  font-weight: bold;
+  line-height: 0;
   position: absolute;
-  bottom: -150px;
-  right: 0px;
+  bottom: 0;
+  right: 20px;
+  bottom: 0;
+  right: 20px;
   color: var(--primary);
   opacity: 0.5;
+  font-family: "Vesper Libre";
+  font-family: "Vesper Libre";
 }
 
-#testimonial .wrap .slider button {
+#testimonial .slider button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -375,69 +282,31 @@
   padding: 0;
   cursor: pointer;
   z-index: 1;
+  font-size: var(--text-3xl);
+  font-size: var(--text-3xl);
 }
 
-#testimonial .wrap .slider button.prev {
+#testimonial .slider button.prev {
   left: 0px;
 }
-#testimonial .wrap .slider button.next {
-  right: 10px;
+
+#testimonial .slider button.next {
+  right: 0px;
 }
 
-/* Contact Info */
+/* Section Maps */
 
-#location {
-  padding: 30px;
-}
-
-#location > .wrap {
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 30px;
-}
-
-#location .map iframe {
+#map iframe {
   width: 100%;
-  height: 100%;
-}
-
-#location .address {
-  display: grid;
-  gap: 30px;
-}
-
-#location .address .wrap {
-  display: grid;
-  gap: 15px;
-}
-
-#location .address p {
-  display: grid;
-  grid-template-columns: 40px calc(100% - 40px);
-}
-
-#location .address p i {
-  color: var(--primary);
-  font-size: 20px;
-  text-align: center;
-}
-
-#location .address p span {
-  margin-left: 10px;
+  max-height: 300px;
+  border-radius: 10px;
 }
 
 /* Tab Screen */
 
 @media screen and (max-width: 1281px) {
-  #our-story img {
-    z-index: -10;
-    opacity: 15%;
-  }
-
-  #our-story .wrap .text .paragraph {
-    width: 80%;
+  #hero {
+    margin-bottom: 110px;
   }
 
   #offers .wrap h3 {
@@ -478,21 +347,23 @@
 
   #motto .wrap > div:first-child::before {
     content: '"';
-    font-size: 15em; /* Adjust the size as needed */
-    font-weight: bold; /* Optional: make it bold */
+    font-size: 10em;
+    font-weight: bold;
     position: absolute;
     font-family: "Vesper Libre", serif;
-    top: -150px;
+    top: -110px;
     left: 5px;
     color: var(--primary);
   }
+
   #motto .wrap > div:first-child::after {
     content: '"';
-    font-size: 15em; /* Adjust the size as needed */
-    font-weight: bold; /* Optional: make it bold */
+    font-size: 10em;
+    font-weight: bold;
     line-height: 1;
     position: absolute;
-    bottom: -150px;
+    font-family: "Vesper Libre", serif;
+    bottom: -170px;
     right: 5px;
     color: var(--primary);
   }
@@ -501,43 +372,13 @@
     width: 100%;
     height: 30rem;
   }
+
   #motto .wrap > div:last-child img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     border-radius: 1rem;
-  }
-
-  #values .wrap .cards {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-  }
-
-  #values .wrap .cards .card {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    color: var(--text-color);
-  }
-
-  #values .wrap .cards .card h4 {
-    text-align: center;
-  }
-
-  #testimonial .wrap .slider {
-    overflow: unset;
-    overflow-y: visible;
-    overflow-x: hidden;
   }
 
   #testimonial .wrap .slider .slider-wrapper {
@@ -548,49 +389,23 @@
   #testimonial .wrap .slider .slider-wrapper .slide {
     height: 100%;
     flex-direction: column;
-    padding: 2rem;
+    padding: 0 3rem;
+    padding: 0 3rem;
   }
 
   #testimonial .wrap .slider .slider-wrapper .slide .card {
     width: 100%;
     height: 100%;
   }
+
   #testimonial .wrap .slider .slider-wrapper .slide .card p {
     font-size: var(--text-base);
-  }
-
-  #testimonial .wrap .slider button {
-    position: absolute;
-    top: 105%;
-    /* bottom: 0px; */
-    /* transform: translateY(-50%); */
-  }
-
-  #testimonial .wrap .slider button.prev {
-    /* left: 0px;
-    bottom: 0px; */
-  }
-  #testimonial .wrap .slider button.next {
-    /* right: 10px; */
   }
 }
 
 /* Mobile Screen */
 
 @media screen and (max-width: 768px) {
-  #our-story .wrap .text .paragraph {
-    width: 80%;
-  }
-  #our-story .wrap {
-    padding: 3rem;
-    padding-bottom: 7rem;
-  }
-
-  #our-story img {
-    z-index: -10;
-    opacity: 15%;
-  }
-
   #offers {
     height: 100dvh;
     background-image: linear-gradient(
@@ -599,11 +414,11 @@
         rgba(0, 0, 0, 0.8)
       ),
       url("../../assets/Offers-bg.jpg");
+    background-blend-mode: darken;
     background-position: left;
   }
 
   #offers .wrap {
-    padding: 3rem;
     align-items: center;
   }
 
@@ -612,14 +427,11 @@
     text-align: center;
     font-size: var(--text-2xl);
   }
-  #offers .wrap p {
+
+  #offers p {
     width: 100%;
     text-align: center;
     font-size: var(--text-base);
-  }
-
-  #motto .wrap {
-    padding: 3rem;
   }
 
   #motto .wrap > div:first-child {
@@ -629,24 +441,14 @@
   #motto .wrap > div:first-child p {
     font-size: var(--text-xl);
   }
+}
 
-  #values .wrap {
-    padding: 3rem;
-    align-items: center;
+@media screen and (max-width: 468px) {
+  #hero .text h2 {
+    font-size: var(--text-4xl);
   }
 
-  #values .wrap .cards .card h4 {
-    width: 100%;
-    text-align: center;
-    font-size: var(--text-xl);
-  }
-  #values .wrap .cards .card p {
-    width: 100%;
-    text-align: center;
-    font-size: var(--text-base);
-  }
-
-  #testimonial .wrap {
-    width: 100%;
+  #hero .text p.desc {
+    font-size: var(--text-lg);
   }
 }

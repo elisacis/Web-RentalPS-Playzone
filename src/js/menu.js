@@ -298,6 +298,7 @@ function updatePrice(quantity) {
     }
     const totalPrice = price * quantity * multiplier;
     priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
+    priceElement.setAttribute("value", totalPrice);
   };
   if (sizeSelect) {
     sizeSelect.addEventListener("change", calculateTotalPrice);

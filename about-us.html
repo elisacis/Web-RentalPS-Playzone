@@ -12,58 +12,68 @@
 
     <script src="./src/js/all.js"></script>
   </head>
+
   <body>
-    <div id="navbar"></div>
+    <header>
+      <div class="header-wrap">
+        <div class="mobile-nav">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">
+          <a href="/">
+            <img src="./assets/Logo.png" alt="Tani Kopi" />
+          </a>
+        </div>
+        <nav>
+          <div class="nav-wrap">
+            <a href="./menu.html">Menu</a>
+            <a href="./about-us.html">About Us</a>
+            <a href="./contact-us.html">Contact Us</a>
+          </div>
+        </nav>
+        <div class="cart-button">
+          <svg
+            width="73"
+            height="74"
+            viewBox="0 0 73 74"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12.1665 12.6667H20.0249C20.6332 12.6667 20.9374 12.6667 21.1574 12.8385C21.3774 13.0103 21.4512 13.3053 21.5987 13.8955L23.7188 22.3758C24.0138 23.5561 24.1614 24.1462 24.6014 24.4898C25.0415 24.8334 25.6498 24.8334 26.8664 24.8334H30.4165"
+              stroke="#222"
+              stroke-width="3.24444"
+              stroke-linecap="round"
+            />
+            <path
+              d="M54.75 52.2083H20.5007C19.4737 52.2083 18.9601 52.2083 18.7173 51.8715C18.4746 51.5346 18.637 51.0474 18.9617 50.0731L20.5522 45.3018C20.9091 44.2311 21.0875 43.6957 21.5124 43.3895C21.9372 43.0833 22.5015 43.0833 23.6301 43.0833H42.5833"
+              stroke="#222"
+              stroke-width="3.24444"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M50.7056 43.0833H25.7074C24.9144 43.0833 24.2376 42.51 24.1072 41.7278L21.5276 26.25C21.404 25.5084 21.9759 24.8333 22.7277 24.8333H59.5208C60.1237 24.8333 60.5159 25.4679 60.2462 26.0072L52.1565 42.1866C51.8818 42.7362 51.32 43.0833 50.7056 43.0833Z"
+              stroke="#222"
+              stroke-width="3.24444"
+              stroke-linecap="round"
+            />
+            <circle cx="51.7082" cy="61.3334" r="3.04167" fill="#222" />
+            <circle cx="27.3752" cy="61.3334" r="3.04167" fill="#222" />
+          </svg>
+        </div>
+      </div>
+    </header>
 
     <section id="hero">
-      <div class="bg">
-        <img src="./assets/Bg-About-us.png" alt="" />
-      </div>
       <div class="wrap">
         <div class="text">
-          <h2>Tani Kopi</h2>
+          <h2 class="sec-title">Tani Kopi</h2>
           <p class="desc">
-            where the warmth of a rural ambiance meets premium coffee flavors,
-            offering an authentic and delightful coffee experience
+            Where the warmth of a rural ambiance meets premium coffee flavors,
+            offering an authentic and delightful coffee experience.
           </p>
         </div>
-      </div>
-    </section>
-
-    <section id="our-story">
-      <div class="wrap">
-        <div class="text">
-          <h2>Our Story</h2>
-          <div class="paragraph">
-            <p>
-              At Tani Kopi, we blend rural charm with premium coffee
-              sophistication. Founded with a passion for exceptional coffee, we
-              source our beans from top local farmers dedicated to quality and
-              sustainability. Our cozy atmosphere makes it the perfect spot to
-              relax and enjoy every sip.
-            </p>
-            <p>
-              Our mission is to create a community where every visit feels like
-              a warm embrace. With friendly service, expertly crafted beverages,
-              and a genuine love for coffee, we believe that great coffee brings
-              people together, making each cup a memorable part of your day.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img src="./assets/coffee-cup-with-beans.png" alt="" />
-    </section>
-
-    <section id="offers">
-      <div class="wrap">
-        <h3>
-          Tani Kopi offers a cozy and welcoming space, perfect for students.
-        </h3>
-        <p>
-          Enjoy our comfortable seating, free Wi-Fi, and a quiet atmosphere
-          ideal for studying, meeting friends, or taking a break with a
-          delicious cup of coffee.
-        </p>
       </div>
     </section>
 
@@ -74,160 +84,105 @@
             We believe in creating a welcoming space where every cup of coffee
             brings people together and fosters a sense of community.
           </h3>
-          <p>Ozik Putra Jarwo, "Director of Tani Kopi</p>
+          <p>Ozik Putra Jarwo, Director of Tani Kopi</p>
         </div>
         <div>
-          <img src="./assets/Motto-bg.png" alt="" />
+          <img src="./assets/site/Owner.jpg" alt="" />
         </div>
       </div>
     </section>
 
-    <section id="values">
+    <section id="offers">
       <div class="wrap">
-        <h2>Our Values</h2>
-        <div class="cards">
-          <div class="card">
-            <div>
-              <div class="icon">
-                <img src="./assets/Values-Icon-1.svg" alt="" />
-              </div>
-              <h4>Quality First</h4>
-            </div>
-            <p>
-              We are committed to sourcing and serving only the finest coffee
-              beans to ensure every cup meets the highest standards of
-              excellence.
-            </p>
-          </div>
-          <div class="card">
-            <div>
-              <div class="icon">
-                <img src="./assets/Values-Icon-2.svg" alt="" />
-              </div>
-              <h4>Community Focus</h4>
-            </div>
-            <p>
-              We strive to create a warm, welcoming environment where everyone
-              feels at home, fostering connections and building relationships.
-            </p>
-          </div>
-          <div class="card">
-            <div>
-              <div class="icon">
-                <img src="./assets/Values-Icon-3.svg" alt="" />
-              </div>
-              <h4>Continuous Improvement</h4>
-            </div>
-            <p>
-              We are dedicated to constantly improving our offerings and
-              services, embracing feedback and innovation to provide the best
-              experience possible.
-            </p>
-          </div>
-        </div>
+        <h3>We offers a cozy and welcoming space, perfect for students.</h3>
+        <p>
+          Enjoy our comfortable seating, free Wi-Fi, and a quiet atmosphere
+          ideal for studying, meeting friends, or taking a break with a
+          delicious cup of coffee.
+        </p>
       </div>
     </section>
 
     <section id="testimonial">
       <div class="wrap">
-        <h2>What They Say Abous Us</h2>
+        <h2 class="sec-title">What They Say About Us</h2>
         <div class="slider">
           <button class="prev">
-            <img src="./assets/Prev-Icon.svg" alt="" />
+            <i class="fas fa-chevron-left"></i>
           </button>
           <div class="slider-wrapper">
             <div class="slide">
               <div class="card">
                 <p>
-                  Love the cozy vibe and amazing coffee at Tani Kopi! A perfect
-                  spot to unwind after a long day.
+                  ‟Absolutely love this place! The coffee is rich and flavorful,
+                  and the cozy atmosphere is perfect for unwinding. Friendly
+                  staff too - highly recommended!”
                 </p>
-                <h5>Rizky Dwi Hamdani</h5>
+                <h5>Ozik Jarwo</h5>
               </div>
               <div class="card">
                 <p>
-                  Tani Kopi has become my go-to place for studying. Great
-                  atmosphere and delicious coffee make it the ideal spot to
-                  focus.
+                  ‟This café has become my go-to spot. Expertly crafted drinks
+                  and an inviting ambiance make it a delightful experience every
+                  time.”
                 </p>
-                <h5>MDI Adhyaksa</h5>
-              </div>
-            </div>
-            <div class="slide">
-              <div class="card">
-                <p>
-                  Tani Kopi never disappoints! The coffee is always top-notch,
-                  and the staff is incredibly friendly
-                </p>
-                <h5>Rizky Dwi Hamdani</h5>
-              </div>
-              <div class="card">
-                <p>
-                  A hidden gem! Tani Kopi offers the perfect blend of comfort
-                  and quality. Highly recommend.
-                </p>
-                <h5>MDI Adhyaksa</h5>
+                <h5>Abi Qhafari</h5>
               </div>
             </div>
             <div class="slide">
               <div class="card">
                 <p>
-                  The best coffee shop in town! The ambiance is perfect for
-                  catching up with friends or getting some work done.
+                  ‟As a coffee connoisseur, I'm thrilled with the outstanding
+                  selection of premium blends here. The cozy setting and
+                  welcoming staff keep me coming back.”
                 </p>
-                <h5>Rizky Dwi Hamdani</h5>
+                <h5>Muhammad Hamdani</h5>
               </div>
               <div class="card">
                 <p>
-                  Tani Kopi has a special charm that keeps me coming back.
-                  Fantastic coffee and a welcoming atmosphere!
+                  ‟Stepping into this café is like finding an oasis of calm. The
+                  exceptional coffee and inviting vibe make it the perfect spot
+                  to unwind.”
                 </p>
-                <h5>MDI Adhyaksa</h5>
+                <h5>MD. Adhyaksa</h5>
+              </div>
+            </div>
+            <div class="slide">
+              <div class="card">
+                <p>
+                  ‟Love the cozy vibe and amazing coffee at Tani Kopi! A perfect
+                  spot to unwind after a long day.”
+                </p>
+                <h5>Abdi Gunawan</h5>
+              </div>
+              <div class="card">
+                <p>
+                  ‟A hidden gem! Tani Kopi offers the perfect blend of comfort
+                  and quality. Highly recommend.”
+                </p>
+                <h5>MD. Agus</h5>
               </div>
             </div>
           </div>
           <button class="next">
-            <img src="./assets/Next-Icon.svg" alt="" />
+            <i class="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>
     </section>
 
-    <section id="location">
+    <section id="map">
       <div class="wrap">
-        <div class="map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4262385576408!2d112.60974266289355!3d-7.954827520923082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788341a48ab5c3%3A0xf1e5a084dbe80d96!2sTANI%20KOPI!5e0!3m2!1sid!2sid!4v1716092230050!5m2!1sid!2sid"
-            width="600"
-            height="450"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-        <div class="address">
-          <h2>Contact Info</h2>
-          <div class="wrap">
-            <p>
-              <i class="fas fa-map-marker-alt"></i
-              ><span
-                >Jl. Fakultas Pertanian, Ketawanggede, Kec. Lowokwaru, Kota
-                Malang</span
-              >
-            </p>
-            <p>
-              <i class="fas fa-envelope"></i><span>taniekopi@gmail.com</span>
-            </p>
-            <p>
-              <i class="fab fa-instagram-square"></i><span>@tanie_kopi</span>
-            </p>
-            <p>
-              <i class="fas fa-phone-square-alt"></i
-              ><span>+62 856 5414 1926</span>
-            </p>
-          </div>
-        </div>
+        <h2 class="sec-title">Find Us on Maps</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.4262385576408!2d112.60974266289355!3d-7.954827520923082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788341a48ab5c3%3A0xf1e5a084dbe80d96!2sTANI%20KOPI!5e0!3m2!1sid!2sid!4v1716092230050!5m2!1sid!2sid"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </section>
 
@@ -240,12 +195,9 @@
               <i class="fas fa-map-marker-alt"></i
               ><span>F. Pertanian Rd., Brawijaya University</span>
             </p>
+            <p><i class="fab fa-instagram"></i><span>@tanie_kopi</span></p>
             <p>
-              <i class="fab fa-instagram-square"></i><span>@tanie_kopi</span>
-            </p>
-            <p>
-              <i class="fas fa-phone-square-alt"></i
-              ><span>+62 856 5414 1926</span>
+              <i class="fas fa-phone-alt"></i><span>+62 856 5414 1926</span>
             </p>
           </div>
         </div>

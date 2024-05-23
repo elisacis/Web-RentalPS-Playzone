@@ -77,6 +77,32 @@ img {
 
 /* Header */
 
+header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+header .logo a {
+  font-size: 0;
+}
+
+header .cart-button {
+  line-height: 0;
+}
+
+header nav .nav-wrap {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  header .logo {
+    justify-content: center;
+  }
+}
+
 header {
   box-shadow: 0px 2px 15px 1px rgb(0 0 0 / 19%);
   padding: 0 30px;
@@ -114,7 +140,7 @@ header nav .nav-wrap {
   align-content: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 0 40px;
   font-size: var(--text-lg);
 }
 
@@ -429,13 +455,21 @@ footer .middle .social {
 
 footer .middle .social a {
   color: white;
+
   width: 40px;
+
   height: 40px;
+
   display: flex;
+
   border: 1px solid #ffffff57;
+
   align-items: center;
+
   justify-content: center;
+
   border-radius: 100%;
+
   transition: 0.3s all;
 }
 
@@ -497,7 +531,7 @@ footer .right .work-hours p span:first-child {
   header nav {
     transition: 0.3s all;
     position: fixed;
-    top: 0;
+    top: -50%;
     width: 100%;
     left: 0;
     background: #8a6a4e;

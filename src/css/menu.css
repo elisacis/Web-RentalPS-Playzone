@@ -1,10 +1,5 @@
-header.navbar {
-  background: var(--primary);
-  padding: 15px 25px;
-}
-
 main {
-  padding: 90px 30px 0;
+  padding: 60px 30px 0;
 }
 
 main .wrap {
