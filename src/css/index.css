@@ -1,7 +1,7 @@
 /* All */
 
 section:not(#navbar, #hero) {
-  margin-bottom:60px;
+  margin-bottom: 60px;
   padding: 0 30px;
 }
 
@@ -12,7 +12,7 @@ h2.sec-title {
 }
 
 .more-wrap {
-  margin-top:30px;
+  margin-top: 30px;
   text-align: center;
 }
 
@@ -38,8 +38,8 @@ h2.sec-title {
 /* Section: Hero */
 
 #hero {
-  padding-top:60px;
-  margin-bottom: 90px
+  padding-top: 60px;
+  margin-bottom: 90px;
 }
 
 #hero .bg {
@@ -253,8 +253,6 @@ h2.sec-title {
 
 /* Responsive */
 
-
-
 @media screen and (max-width: 768px) {
   #hero .text h2 {
     font-size: 2rem;
@@ -268,64 +266,65 @@ h2.sec-title {
 
   #cup .wrap {
     grid-template-columns: 1fr;
-}
+  }
 
-#cup .left, #cup .right {
+  #cup .left,
+  #cup .right {
     order: 1;
     text-align: left;
-}
+  }
 
-#cup .mid {
+  #cup .mid {
     order: 0;
-}
+  }
 
-#cup .mid img {
+  #cup .mid img {
     max-height: 200px;
     margin: auto;
     display: block;
-}
+  }
 
-#cup .item-text {
+  #cup .item-text {
     border-radius: 10px;
     padding: 20px;
     background: var(--primary);
     color: white;
     background: linear-gradient(135deg, #523b27, #8a6a4eb0);
-}
+  }
 
-#cup .item-text img {
+  #cup .item-text img {
     filter: brightness(88);
     opacity: 1;
-}
+  }
 
-    footer .footer-wrap {
-      gap: 0;
-      grid-template-columns: 1fr;
-    }
-  
-    footer .left,
-    footer .right {
-      text-align: left;
-      order: 1;
-      padding: 30px 0;
-    }
-  
-    footer .middle {
-      order: 2;
-      text-align: left;
-      margin: 0 -30px;
-    }
-  
-    footer .middle .social {
-      justify-content: left;
-    }
+  footer .footer-wrap {
+    gap: 0;
+    grid-template-columns: 1fr;
+  }
+
+  footer .left,
+  footer .right {
+    text-align: left;
+    order: 1;
+    padding: 30px 0;
+  }
+
+  footer .middle {
+    order: 2;
+    text-align: left;
+    margin: 0 -30px;
+  }
+
+  footer .middle .social {
+    justify-content: left;
+  }
 }
 
 @media screen and (max-width: 468px) {
   #best .wrap {
-    margin:0;
+    margin: 0;
   }
   #best .more {
-    margin-top:30px
+    margin-top: 30px;
   }
 }
