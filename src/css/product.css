@@ -50,8 +50,7 @@ body.ov {
 
 .menu-list .product:hover,
 .popup .product {
-
-    background: var(--primary);
+    background: #9d7d60;
     color: white;
 }
 
