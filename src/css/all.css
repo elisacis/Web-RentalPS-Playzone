@@ -381,11 +381,24 @@ header a:hover {
   display: flex;
   flex-direction: row;
   justify-content: end;
+  align-items: center;
 }
 
 .modal .modal-content #modal-footer .checkout p {
   font-size: var(--text-3xl);
   font-weight: bold;
+}
+
+.checkout span {
+  display:none;
+  margin-left: 20px;
+  color: white;
+  background: green;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px 20px;
 }
 
 /* Footer */

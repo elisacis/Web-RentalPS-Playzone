@@ -289,21 +289,27 @@ function updatePrice(quantity) {
   const priceElement = document.querySelector(".price");
   const price = parseInt(priceElement.getAttribute("value"));
   const sizeSelect = document.querySelector(".popup .size select");
-  const calculateTotalPrice = () => {
-    let multiplier = 1;
-    if (sizeSelect && sizeSelect.value === "Medium") {
-      multiplier = 1.25;
-    } else if (sizeSelect && sizeSelect.value === "Large") {
-      multiplier = 1.5;
-    }
-    const totalPrice = price * quantity * multiplier;
-    priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
-    priceElement.setAttribute("value", totalPrice);
-  };
-  if (sizeSelect) {
+  if (sizeSelect){
+    const calculateTotalPrice = () => {
+      let multiplier = 1;
+      if (sizeSelect && sizeSelect.value === "Medium") {
+        multiplier = 1.25;
+      } else if (sizeSelect && sizeSelect.value === "Large") {
+        multiplier = 1.5;
+      }
+      const totalPrice = (price * multiplier) * quantity ;
+      priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
+      priceElement.setAttribute("priceValue", totalPrice);
+      
+    };
     sizeSelect.addEventListener("change", calculateTotalPrice);
+    calculateTotalPrice();
+  } else {
+    const totalPrice = price * quantity ;
+    priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
+    priceElement.setAttribute("priceValue", totalPrice);
+    // priceElement.setAttribute("value", totalPrice);
   }
-  calculateTotalPrice();
 }
 
 function fadeOut(el) {
