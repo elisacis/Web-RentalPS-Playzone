@@ -5,7 +5,7 @@ section:not(#navbar, #hero) {
   padding: 0 30px;
 }
 
-h2.sec-title {
+section h2.sec-title {
   text-align: center;
   padding: 0 30px 30px;
   font-size: 2.3rem;
@@ -38,37 +38,41 @@ h2.sec-title {
 /* Section: Hero */
 
 #hero {
-  padding: min(30%, 120px) 10px;
-  background: url(/assets/Hero-bg.png);
+  padding: min(30%, 150px) 10px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+#hero:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background: url(../../assets/site/Hero-bg.png);
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-bottom: 90px
-}
-
-#hero .wrap {
-  height: auto;
-  max-width: var(--max-width);
-  margin: auto;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  padding: 30px;
 }
 
 #hero .text {
   text-shadow: 0 0 6px black;
   text-align: center;
   color: var(--secondary);
+  max-width:900px;
+  margin:auto
 }
 
 #hero .text h2 {
-  font-size: var(--text-5xl);
+  font-size: var(--text-4xl);
 }
 
 #hero .text p.desc {
   font-size: var(--text-xl);
-  margin: 25px 0 50px;
+  margin: 0 0 50px;
 }
 
 #hero .text .button {

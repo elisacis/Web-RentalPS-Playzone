@@ -71,7 +71,7 @@ h2.title {
 }
 
 .img {
-    background: url(/assets/Contact-Us.PNG) center / cover no-repeat;
+    background: url(../../assets/Contact-Us.PNG) center / cover no-repeat;
     border-radius: 10px;
 }
 
