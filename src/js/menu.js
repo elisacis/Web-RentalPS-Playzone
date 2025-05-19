@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 var body = document.querySelector("body");
 
-document.querySelector(".tab").innerHTML = `<p class="all">All Menu</p>${[
+document.querySelector(".tab").innerHTML = `<p class="all">All Categories</p>${[
   ...new Set(
     [...document.querySelectorAll(".category")].map(
       (c) =>
@@ -66,6 +66,8 @@ document.querySelector(".tab").innerHTML = `<p class="all">All Menu</p>${[
     )
   ),
 ].join("")}`;
+
+
 
 const products = document.querySelectorAll(".product");
 
@@ -97,8 +99,10 @@ tabs.forEach(function (tab) {
   });
 });
 
-// Mengatur tab "All Menu" sebagai tab default yang aktif
-tabs[0].classList.add("active");
+//Mengatur tab "All Menu" sebagai tab default yang aktif
+if (tabs.length > 0) {
+  tabs[0].classList.add("active");
+}
 
 products.forEach((product) => {
   product.addEventListener("click", () => {
@@ -107,12 +111,49 @@ products.forEach((product) => {
     const ov = document.querySelector(".overlay");
     popup.innerHTML = "";
     popup.appendChild(clonedContent);
+
+    // Ambil kategori dan subkategori
+    const category = product.getAttribute("data-category") || "Snack";
+    const subcategory = product.getAttribute("data-subcategory") || "";
+
+    // Set data-category di popup
+    popup.setAttribute("data-category", category);
+    popup.setAttribute("data-subcategory", subcategory);
+
+    // Cek apakah ada elemen price
+    const productPriceElement = product.querySelector(".price");
+    const popupPriceElement = popup.querySelector(".price");
+
+    if (productPriceElement && popupPriceElement) {
+      const originalPrice = productPriceElement.getAttribute("value") || productPriceElement.textContent.replace(/\D/g, '');
+      popupPriceElement.setAttribute("value", originalPrice);
+      popupPriceElement.textContent = "Rp " + parseInt(originalPrice).toLocaleString("id-ID");
+    }
+
+    // Set amount default
+    const amountInput = popup.querySelector("#product-amount");
+    if (amountInput) {
+      let initialAmount = 1;
+      if (category === "Play") {
+        if (subcategory === "VIP") {
+          initialAmount = 2;
+        } else if (subcategory === "Bawa Pulang") {
+          initialAmount = 12;
+        } else if (subcategory === "Reguler") {
+          initialAmount = 1;
+        }
+      }
+      amountInput.value = initialAmount;
+      // jangan langsung updatePrice di sini
+    }
+
     popup.classList.add("show");
     ov.classList.add("show");
     body.classList.add("ov");
     fadeIn(document.querySelector(".overlay"));
   });
 });
+
 
 function closePopup() {
   document.querySelector(".popup").classList.remove("show");
@@ -138,50 +179,50 @@ function beforeHTML(selector, html) {
 function addToCart() {
   const productName = document.querySelector(".popup h3").textContent;
   const productPrice = document.querySelector(".popup .price").textContent;
-  const productQuantity = document.querySelector(
-    ".popup #product-amount"
-  ).value;
-  const productImage = document
-    .querySelector(".popup .img img")
-    .getAttribute("src");
-  const originalPrice = document
-    .querySelector(".popup .price")
-    .getAttribute("value");
-  const size = document.querySelector(".popup #hiddenSizeInput").value;
-  const type = document.querySelector(".popup #hiddenTypeInput").value;
-  const sugar = document.querySelector(".popup #hiddenSugarInput").value;
+  const productQuantity = document.querySelector(".popup #product-amount").value;
+  const productImage = document.querySelector(".popup .img img").getAttribute("src");
+  const originalPrice = document.querySelector(".popup .price").getAttribute("value");
 
-  // Initialize cartItems as an empty array
+  const typeElement = document.querySelector(".popup #hiddenTypeInput");
+  const sugarElement = document.querySelector(".popup #hiddenSugarInput");
+  const type = typeElement ? typeElement.value : null;
+  const sugar = sugarElement ? sugarElement.value : null;
+
+  // Ambil juga kategori dan subkategori dari popup
+  const popup = document.querySelector(".popup");
+  const category = popup.getAttribute("data-category") || "Snack";
+  const subcategory = popup.getAttribute("data-subcategory") || "";
+
   let cartItems = [];
 
-  // Retrieve existing cart items from localStorage
   const existingCartItems = localStorage.getItem("cartItems");
-
   if (existingCartItems) {
-    // Parse the existing cart items from localStorage
     cartItems = JSON.parse(existingCartItems);
   }
 
-  // Add the new product data to the existing cart items
+  const finalType = type || "Tidak ada tipe";
+  const finalTempatDuduk = sugar || "Tidak ada tempat duduk";
+
   const newProductData = {
     name: productName,
     price: productPrice,
     image: productImage,
     quantity: productQuantity,
     originalPrice: originalPrice,
-    size: size,
-    type: type,
-    sugar: sugar,
+    type: finalType,
+    sugar: finalTempatDuduk,
+    category: category,           
+    subcategory: subcategory      
   };
+
   cartItems.push(newProductData);
 
-  // Save the updated cart items back to localStorage
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-  // Optionally, you can provide feedback to the user
   alert("Product added to cart!");
   closePopup();
 }
+
 
 beforeHTML(
   ".price",
@@ -190,44 +231,23 @@ beforeHTML(
       <span>Amount</span>
       <div class="number">
         <div class="minus" onclick="decreaseValue()"><i class="fas fa-minus"></i></div>
-        <div class="value"><input id="product-amount" value="1"/></div>
+        <div class="value"><input id="product-amount" value=""/></div>
         <div class="plus" onclick="increaseValue()"><i class="fas fa-plus"></i></div>
       </div>
   </div>
 `
 );
 
-appendHTML(
-  ".product-wrap",
-  `
-  <div onclick="addToCart()" class="add"><span>Add to cart</span><i class="fas fa-cart-plus"></i></div>
-  <div class="close-pop" onclick="closePopup()"><i class="fas fa-times"></i></div>
-`
-);
-
-appendHTML(
-  ".product-wrap .size",
-  `
-  <span>Size</span>
-  <select class="fixed" onchange="stillValue(); updateHiddenInput('hiddenSizeInput', this.value)">
-      <option selected=''>Regular</option>
-      <option>Medium</option>
-      <option>Large</option>
-  </select>
-  <input name="size" type="hidden" id="hiddenSizeInput" value="Regular" />
-`
-);
 
 appendHTML(
   ".product-wrap .type",
   `
-  <span>Ice</span>
+  <span>Versi</span>
   <select class="fixed" onchange="stillValue(); updateHiddenInput('hiddenTypeInput', this.value)">
-      <option>Less</option>
-      <option selected>Normal</option>
-      <option>Extra</option>
+      <option selected>PS 4</option>
+      <option>PS 5</option>
   </select>
-  <input name="type" type="hidden" id="hiddenTypeInput" value="Normal" />
+  <input name="type" type="hidden" id="hiddenTypeInput" value="PS 4" />
 
 `
 );
@@ -235,16 +255,62 @@ appendHTML(
 appendHTML(
   ".product-wrap .sugar",
   `
-  <span>Sugar</span>
+  <span>Nomor Tempat Duduk</span>
   <select class="fixed" onchange="stillValue(); updateHiddenInput('hiddenSugarInput', this.value)">
-      <option>Less</option>
-      <option selected=''>Normal</option>
-      <option>Extra</option>
+      <option selected=''>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
   </select>
-  <input name="sugar" type="hidden" id="hiddenSugarInput" value="Normal" />
+  <input name="sugar" type="hidden" id="hiddenSugarInput" value="1" />
 
 `
 );
+
+
+document.querySelectorAll(".product").forEach((product) => {
+  const hasPrice = product.querySelector(".price");
+
+  // Tambahkan tombol close (semua produk dapat ini)
+  product.querySelector(".product-wrap").insertAdjacentHTML("beforeend", `
+    <div class="close-pop" onclick="closePopup()"><i class="fas fa-times"></i></div>
+  `);
+
+  // Hanya tambahkan tombol cart jika ada harga
+  if (hasPrice) {
+    product.querySelector(".product-wrap").insertAdjacentHTML("beforeend", `
+      <div onclick="addToCart()" class="add"><span>Add to cart</span><i class="fas fa-cart-plus"></i></div>
+    `);
+  }
+});
+
+
 
 Array.from(document.getElementsByClassName("price")).forEach((e) =>
   e.setAttribute(
@@ -253,23 +319,49 @@ Array.from(document.getElementsByClassName("price")).forEach((e) =>
   )
 );
 
-function decreaseValue() {
-  const inputElement = document.getElementById("product-amount");
-  let currentValue = parseInt(inputElement.value);
-  if (currentValue > 1) {
-    currentValue--;
-    inputElement.value = currentValue;
-    updatePrice(currentValue);
+function getStepValue() {
+  const popup = document.querySelector(".popup");
+  const category = popup.getAttribute("data-category");
+  const subcategory = popup.getAttribute("data-subcategory");
+
+  // Default step
+  let step = 1;
+
+  if (category === "Snack") {
+    step = 1;
+  } else if (category === "Play") {
+    if (subcategory === "VIP") {
+      step = 2;
+    } else if (subcategory === "Reguler") {
+      step = 1;
+    } else if (subcategory === "Bawa Pulang") {
+      step = 12;
+    }
   }
+  return step;
 }
 
 function increaseValue() {
-  const inputElement = document.getElementById("product-amount");
-  let currentValue = parseInt(inputElement.value);
-  currentValue++;
-  inputElement.value = currentValue;
-  updatePrice(currentValue);
+  const input = document.getElementById("product-amount");
+  let currentValue = parseInt(input.value);
+  const step = getStepValue();
+  const newValue = currentValue + step;
+  input.value = newValue;
+  updatePrice(newValue);
 }
+
+function decreaseValue() {
+  const input = document.getElementById("product-amount");
+  let currentValue = parseInt(input.value);
+  const step = getStepValue();
+  if (currentValue - step >= step) {
+    const newValue = currentValue - step;
+    input.value = newValue;
+    updatePrice(newValue);
+  }
+}
+
+
 
 function stillValue() {
   const inputElement = document.getElementById("product-amount");
@@ -286,31 +378,44 @@ function updateHiddenInput(inputId, value) {
 }
 
 function updatePrice(quantity) {
-  const priceElement = document.querySelector(".price");
-  const price = parseInt(priceElement.getAttribute("value"));
-  const sizeSelect = document.querySelector(".popup .size select");
-  if (sizeSelect){
-    const calculateTotalPrice = () => {
-      let multiplier = 1;
-      if (sizeSelect && sizeSelect.value === "Medium") {
-        multiplier = 1.25;
-      } else if (sizeSelect && sizeSelect.value === "Large") {
-        multiplier = 1.5;
+  const popup = document.querySelector(".popup");
+  const category = popup.getAttribute("data-category");
+  const subcategory = popup.getAttribute("data-subcategory");
+  const priceElement = popup.querySelector(".price");
+
+  let totalPrice = 0;
+
+  if (category === "Play") {
+    if (subcategory === "VIP") {
+      // VIP: 18.000 per 2 jam
+      totalPrice = (quantity / 2) * 18000;
+    } else if (subcategory === "Bawa Pulang") {
+      // Bawa Pulang: 12 jam = 48.000, 24 jam = 75.000
+      let paket24 = Math.floor(quantity / 24);
+      let sisaJam = quantity % 24;
+
+      totalPrice = paket24 * 75000;
+
+      if (sisaJam > 0) {
+        // Kalau masih ada sisa jam, dianggap ambil paket 12 jam
+        totalPrice += 48000;
       }
-      const totalPrice = (price * multiplier) * quantity ;
-      priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
-      priceElement.setAttribute("priceValue", totalPrice);
-      
-    };
-    sizeSelect.addEventListener("change", calculateTotalPrice);
-    calculateTotalPrice();
+    } else if (subcategory === "Reguler") {
+      // Reguler: 10.000 per jam
+      const price = parseInt(priceElement.getAttribute("value"));
+      totalPrice = quantity * price;
+    }
   } else {
-    const totalPrice = price * quantity ;
-    priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
-    priceElement.setAttribute("priceValue", totalPrice);
-    // priceElement.setAttribute("value", totalPrice);
+    // Snack atau lainnya (harga normal x amount)
+    const price = parseInt(priceElement.getAttribute("value"));
+    totalPrice = price * quantity;
   }
+
+  // Tampilkan hasil
+  priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
+  priceElement.setAttribute("priceValue", totalPrice);
 }
+
 
 function fadeOut(el) {
   el.style.opacity = 1;

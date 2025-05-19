@@ -4,12 +4,12 @@
 /* CSS Reset */
 
 :root {
-  --text-color: #505050;
-  --text-soft: #696969;
-  --primary: #8a6a4e;
-  --primary-hover: #6b5039;
-  --secondary: #f0f0f0;
-  --tertiary: #bebebe;
+  --text-color: #ffffff;
+  --text-soft: #617bca; /*617bca ini buat apa???*/
+  --primary: #3c6186; /*bawah*/
+  --primary-hover: #153d53; /*bawah tengah*/
+  --secondary: #ffffff; /*tulisan di about*/
+  --tertiary: #dbe8ff;
   --max-width: 1100px;
   --text-base: 1rem;
   --text-lg: 1.125rem;
@@ -97,6 +97,7 @@ header nav .nav-wrap {
   justify-content: center;
 }
 
+
 @media screen and (max-width: 768px) {
   header .logo {
     justify-content: center;
@@ -106,7 +107,7 @@ header nav .nav-wrap {
 header {
   box-shadow: 0px 2px 15px 1px rgb(0 0 0 / 19%);
   padding: 0 30px;
-  background: #ffffff;
+  background: #153d53;  /*header diatas hl*/
   position: fixed;
   top: 0;
   left: 0;
@@ -194,9 +195,9 @@ header a:hover {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #143149;  /*bg keranjang*/
   padding: 5%;
-  border: 1px solid #888;
+  border: 1px solid #688ab1;
   border-radius: 20px;
   width: 80%;
   height: 80%;
@@ -220,14 +221,14 @@ header a:hover {
 }
 
 .close {
-  color: #aaa;
+  color: #b8b8b8;/*tombol x krj*/
   font-size: var(--text-6xl);
-  font-weight: bold;
+  font-weight: bold; 
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: rgb(255, 255, 255); /* warna kerangjan x*/
   text-decoration: none;
   cursor: pointer;
 }
@@ -246,7 +247,7 @@ header a:hover {
   width: 100%;
   height: auto;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #ffffff; /*garis pembatas di keranjang*/
   display: flex;
   justify-content: space-between;
 }
@@ -405,7 +406,7 @@ header a:hover {
 
 footer {
   padding: 0 30px;
-  color: white;
+  color: white; /*tulisan footer bagian bawah*/
   background: var(--primary);
 }
 
@@ -467,7 +468,7 @@ footer .middle .social {
 }
 
 footer .middle .social a {
-  color: white;
+  color: white; /*icon sosial media di bawah*/
 
   width: 40px;
 
@@ -475,7 +476,7 @@ footer .middle .social a {
 
   display: flex;
 
-  border: 1px solid #ffffff57;
+  border: 1px solid #ffffff57;  /*lingkaran icon sosial media di bawah*/
 
   align-items: center;
 
@@ -525,7 +526,7 @@ footer .right .work-hours p span:first-child {
   }
   header .header-wrap {
     padding: 0 30px;
-    background: #fff;
+    background: #ffffff;
   }
 
   header .mobile-nav {
@@ -547,7 +548,7 @@ footer .right .work-hours p span:first-child {
     top: -50%;
     width: 100%;
     left: 0;
-    background: #8a6a4e;
+    background: #8a4e4e;
     z-index: -1;
   }
 

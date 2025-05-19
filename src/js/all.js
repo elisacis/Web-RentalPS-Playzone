@@ -68,20 +68,30 @@ function displayCartModal() {
     const itemDescription = document.createElement("div");
     itemDescription.classList.add("item-description");
 
-    const itemSize = document.createElement("p");
-    itemSize.textContent = "Size : " + item.size;
-    const itemType = document.createElement("p");
-    itemType.textContent = "Ice : " + item.type;
-    const itemSugar = document.createElement("p");
-    itemSugar.textContent = "Sugar : " + item.sugar;
+    // Tampilkan Size kalau ada
+    if (item.size && item.size !== "null" && item.size !== "undefined" && item.size !== "Tidak ada size") {
+      const itemSize = document.createElement("p");
+      itemSize.textContent = "Size : " + item.size;
+      itemDescription.appendChild(itemSize);
+    }
 
-    itemDescription.appendChild(itemSize);
-    itemDescription.appendChild(itemType);
-    itemDescription.appendChild(itemSugar);
+    // Tampilkan Type kalau ada
+    if (item.type && item.type !== "null" && item.type !== "undefined" && item.type !== "Tidak ada tipe") {
+      const itemType = document.createElement("p");
+      itemType.textContent = "Versi : " + item.type;
+      itemDescription.appendChild(itemType);
+    }
+
+    // Tampilkan Sugar (Tempat Duduk) kalau ada
+    if (item.sugar && item.sugar !== "null" && item.sugar !== "undefined" && item.sugar !== "Tidak ada tempat duduk") {
+      const itemSugar = document.createElement("p");
+      itemSugar.textContent = "Nomor Tempat Duduk : " + item.sugar;
+      itemDescription.appendChild(itemSugar);
+    }
+
 
     // Create item price element
     const itemPrice = document.createElement("p");
-    itemPrice.textContent = item.price;
     itemPrice.classList.add(`item-price-${index}`);
     itemPrice.setAttribute("value", item.originalPrice); // Store the base price for calculations
 
@@ -138,48 +148,106 @@ function displayCartModal() {
     }; // Assuming increaseValue is defined elsewhere
     plusButton.innerHTML = '<i class="fas fa-plus"></i>';
 
+
     function decreaseValue() {
       const inputElement = document.getElementById(`product-amount-${index}`);
       let currentValue = parseInt(inputElement.value);
-      if (currentValue > 1) {
-        currentValue--;
+    
+      let step = 1;
+      if (item.category === "Play") {
+        if (item.subcategory === "VIP") {
+          step = 2;
+        } else if (item.subcategory === "Bawa Pulang") {
+          step = 12;
+        } else if (item.subcategory === "Reguler") {
+          step = 1;
+        }
+      }
+    
+      if (currentValue > step) {
+        currentValue -= step;
         inputElement.value = currentValue;
-        item.quantity = currentValue; // Update the quantity in the data
+        item.quantity = currentValue; // Update quantity
         updatePrice(currentValue);
       }
     }
-
+    
     function increaseValue() {
       const inputElement = document.getElementById(`product-amount-${index}`);
       let currentValue = parseInt(inputElement.value);
-      currentValue++;
+    
+      let step = 1;
+      if (item.category === "Play") {
+        if (item.subcategory === "VIP") {
+          step = 2;
+        } else if (item.subcategory === "Bawa Pulang") {
+          step = 12;
+        } else if (item.subcategory === "Reguler") {
+          step = 1;
+        }
+      }
+    
+
+      currentValue += step;
       inputElement.value = currentValue;
-      item.quantity = currentValue; // Update the quantity in the data
+      item.quantity = currentValue; // Update quantity
       updatePrice(currentValue);
     }
+    
 
     function updatePrice(quantity) {
       const priceElement = document.querySelector(`.item-price-${index}`);
       const price = parseInt(priceElement.getAttribute("value"));
 
-      const totalPrice = price * quantity;
+      let totalPrice = 0;
+
+      if (item.category === "Play") {
+        if (item.subcategory === "VIP") {
+          // VIP: 18.000 per 2 jam
+          totalPrice = (quantity / 2) * 18000;
+        } else if (item.subcategory === "Bawa Pulang") {
+          // Bawa Pulang: 12 jam = 48.000, 24 jam = 75.000
+          let paket24 = Math.floor(quantity / 24);
+          let sisaJam = quantity % 24;
+
+          totalPrice = paket24 * 75000;
+
+          if (sisaJam > 0) {
+            // Kalau ada sisa, dianggap ambil paket 12 jam
+            totalPrice += 48000;
+          }
+        } else if (item.subcategory === "Reguler") {
+          // Reguler: harga normal x jam
+          totalPrice = quantity * price;
+        }
+      } else {
+        // Snack, Game, dll
+        totalPrice = price * quantity;
+      }
+
+      // Tampilkan harga
       priceElement.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
-
-      cartItemsData[index].quantity = quantity; // Update quantity in cartItemsData
-
-      cartItemsData[index].price = "Rp " + totalPrice.toLocaleString("id-ID"); // Update quantity in cartItems
+      
+      // Update data di localStorage
+      cartItemsData[index].quantity = quantity;
+      cartItemsData[index].price = "Rp " + totalPrice.toLocaleString("id-ID");
       localStorage.setItem("cartItems", JSON.stringify(cartItemsData));
 
       updateTotalPrice();
     }
 
+
     function updateTotalPrice() {
       totalPriceAllItems = cartItemsData.reduce((total, item) => {
-        return total + item.originalPrice * item.quantity;
+        // Ambil angka dari string harga
+        let priceNumber = parseInt(item.price.replace(/[^\d]/g, ""));
+        return total + priceNumber;
       }, 0);
+    
       totalPriceElement.textContent =
         "Rp " + totalPriceAllItems.toLocaleString("id-ID");
     }
+    
 
     // Append the elements to the quantity container
     quantity.appendChild(minusButton);
@@ -197,8 +265,9 @@ function displayCartModal() {
     // Append item container to cart items container
     cartItemsContainer.appendChild(itemContainer);
 
-    totalPriceAllItems +=
-      parseInt(item.originalPrice) * parseInt(item.quantity);
+    // update new price
+    updatePrice(item.quantity);
+
   });
 
   totalPriceElement.setAttribute("value", totalPriceAllItems);

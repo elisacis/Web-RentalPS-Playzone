@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Tani Kopi</title>
+    <title>PlayZone</title>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link media="all" rel="stylesheet" href="./src/css/all.css" />
@@ -12,9 +12,16 @@
 
     <link media="all" rel="stylesheet" href="./src/css/index.css" />
     <link media="all" rel="stylesheet" href="./src/css/product.css" />
+
+    <style>
+      body {
+        color: white;
+      }
+    </style>
+
   </head>
 
-  <body>
+  <body style="background-color: rgb(8, 26, 41);">
     <header>
       <div class="header-wrap">
         <div class="mobile-nav">
@@ -22,12 +29,12 @@
         </div>
         <div class="logo">
           <a href="/">
-            <img src="./assets/Logo.png" alt="Tani Kopi" />
+            <img src="./assets/Logo.png" alt="PlayZone" />
           </a>
         </div>
         <nav>
           <div class="nav-wrap">
-            <a href="./menu.html">Menu</a>
+            <a href="./menu.html">Services</a>
             <a href="./about-us.html">About Us</a>
             <a href="./contact-us.html">Contact Us</a>
           </div>
@@ -70,39 +77,36 @@
     <section id="hero">
       <div class="wrap">
         <div class="text">
-          <h2 class="sec-title">A Sip of Tradition, A Taste of Perfection</h2>
+          <h2 class="sec-title">Your Adventure, Your PlayStation</h2>
           <p class="desc">
-            Discover the rich flavors and heritage of Indonesian coffee at Kopi
-            Tani. Each cup tells a story of passion, tradition, and the finest
-            locally-sourced beans.
+            "Lepas dari dunia nyata dan masuklah ke semesta tak terbatas bersama PlayZone—tempat di mana setiap permainan adalah petualangan, setiap tantangan adalah adrenalin, dan setiap kemenangan adalah legenda. Rasakan atmosfer intens, grafis memukau, dan teknologi canggih yang membawamu serasa jadi bagian dari aksi. Bangun strategi, kuasai medan tempur, dan tunjukkan siapa penguasa arena! Di PlayZone, kami bukan hanya menyediakan game—kami menciptakan pengalaman luar biasa yang bikin kamu lupa waktu. Inilah zona terbaik bagi para pejuang digital, tempat semua gamer sejati pulang!"
           </p>
-          <span class="button">ORDER</span>
         </div>
       </div>
     </section>
 
     <section id="cup">
-      <h2 class="sec-title">What We Offers</h2>
+      <h2  class="sec-title">What We Offers</h2>
       <div class="wrap">
         <div class="left">
           <div class="item-text">
             <div class="icon">
               <img src="./assets/Made-Icon-1.png" />
             </div>
-            <h3>Premium Taste</h3>
+            <h3>Superior Gaming Experience</h3>
             <p>
-              Our premium blends deliver an exceptional taste experience.
-              Indulge in the rich aroma and balanced flavors.
+              Nikmati pengalaman bermain terbaik dengan performa tinggi 
+              dan grafis memukau yang membuat setiap momen lebih nyata.
             </p>
           </div>
           <div class="item-text">
             <div class="icon">
               <img src="./assets/Made-Icon-2.png" />
             </div>
-            <h3>Convenient Place</h3>
+            <h3 > Best Value for Entertainment</h3>
             <p>
-              Step into our cozy café and enjoy your drinks in comfort. Our
-              location and hours make it easy to visit.
+              Dapatkan hiburan tanpa batas dengan koleksi game
+               eksklusif, fitur premium, dan teknologi mutakhir yang sepadan dengan harganya.
             </p>
           </div>
         </div>
@@ -114,20 +118,20 @@
             <div class="icon">
               <img src="./assets/Made-Icon-3.png" />
             </div>
-            <h3>Made by Best Brewer</h3>
-            <p>
-              Our skilled baristas are masters of their craft, meticulously
-              preparing each cup with precision and awesome expertise.
+            <h3>VIP Gaming Room</h3>
+            <p> 
+              Rasakan sensasi bermain di ruang VIP dengan fasilitas 
+              eksklusif, kursi gaming yang nyaman, dan layar ultra HD untuk pengalaman maksimal.
             </p>
           </div>
           <div class="item-text">
             <div class="icon">
               <img src="./assets/Made-Icon-4.png" />
             </div>
-            <h3>Good Price</h3>
+            <h3>Snack & Drinks Corner</h3>
             <p>
-              Enjoy high-quality products and service at prices that fit your
-              budget. We provide exceptional value, fantastic choice.
+              Jangan biarkan rasa lapar mengganggu 
+              permainanmu! Nikmati berbagai pilihan camilan dan minuman segar di area snack bar kami.
             </p>
           </div>
         </div>
@@ -140,28 +144,22 @@
     <section id="gallery">
       <div class="wrap">
         <div class="left">
-          <img src="./assets/home-gallery/gallery-1.png" />
+          <img src="./assets/home-gallery/gallery-1.jpg" />
         </div>
         <div class="mid">
-          <img src="./assets/home-gallery/gallery-2.png" />
+          <img src="./assets/home-gallery/gallery-2.jpg" />
         </div>
         <div class="right">
-          <img src="./assets/home-gallery/gallery-3.png" />
-          <img src="./assets/home-gallery/gallery-4.png" />
+          <img src="./assets/home-gallery/gallery-3.jpg" />
+          <img src="./assets/home-gallery/gallery-4.jpg" />
         </div>
       </div>
     </section>
 
     <section id="best">
-      <h2 class="sec-title">Our Best Menu</h2>
-      <div class="wrap">
-        <div class="tab"></div>
-        <div class="overlay" onclick="closePopup()"></div>
-        <div class="popup"></div>
-        <div class="menu-list" id="index-container"></div>
-      </div>
+      
       <div class="more-wrap">
-        <a class="more" href="./menu.html">See all menu</a>
+        <a class="more" href="./menu.html">See all our services</a>
       </div>
     </section>
 
@@ -173,35 +171,37 @@
           <div class="slider-container">
             <div class="testimonial">
               <p>
-                ‟Absolutely love this place! The coffee is rich and flavorful,
-                and the cozy atmosphere is perfect for unwinding. Friendly staff
-                too - highly recommended!”
+                ‟Tempat Hiburan Playstation Terbaik di Jember. Pelayanan dan Fasilitas hidangan bagus.”
               </p>
-              <h3>Ozik Jarwo</h3>
+              <h3>Firman Syach</h3>
             </div>
             <div class="testimonial">
               <p>
-                ‟This café has become my go-to spot. Expertly crafted drinks and
-                an inviting ambiance make it a delightful experience every
-                time.”
+                ‟Tempat main PS (Playstation) yang cukup nyaman dan asik. Terdapat banyak banyak playstation, jadi jangan
+                 khawatir tidak kebagian ps. Harga sewanya standart ps 4. Buka sampai pagi. Terdapat parkiran motor 
+                 didepan, dilengkapi juga dengan cctv jadi lebih aman. Rekomended buat kalian yang ingin hiburan 
+                 dengan mai PS”
               </p>
-              <h3>Abi Qhafari</h3>
+              <h3>Irvan S.</h3>
             </div>
             <div class="testimonial">
               <p>
-                ‟As a coffee connoisseur, I'm thrilled with the outstanding
-                selection of premium blends here. The cozy setting and welcoming
-                staff keep me coming back.”
+                ‟Tempatnya nyaman, Gamenya banyak, Harga tergolong sederhana, Pelayanan baik, Ditambah ada ruangan ber AC”
               </p>
-              <h3>Muhammad Hamdani</h3>
+              <h3>Alfian Tyas</h3>
             </div>
             <div class="testimonial">
               <p>
-                ‟Stepping into this café is like finding an oasis of calm. The
-                exceptional coffee and inviting vibe make it the perfect spot to
-                unwind.”
+                ‟Tempat Ps langganan di Jember, tempat luas, nyaman kipas ada, juga terdapat ruang tersendiri untuk PS 5,
+                harga paketan lebih murah.”
               </p>
-              <h3>MD. Adhyaksa</h3>
+              <h3>Bayu D. Anggarisman</h3>
+            </div>
+            <div class="testimonial">
+              <p>
+                ‟Tersedia 30 lebih PSnya, gamenya banyak tapi saya lebih sering ya main Resident Evil 5 dan 6”
+              </p>
+              <h3>Taki Jo</h3>
             </div>
           </div>
         </div>
@@ -230,14 +230,7 @@
         </div>
         <div id="cartItemsContainer"></div>
         <div id="modal-footer">
-          <div class="dropdown">
-            <button class="dropbtn" id="dropbtn">Dine In</button>
-            <div class="dropdown-content" id="dropdown-content">
-              <a data-value="Dine In">Dine In</a>
-              <hr />
-              <a data-value="Take Away">Take Away</a>
-            </div>
-          </div>
+          
           <div class="checkout">
             <p id="total-price"></p>
             <span href="">Check Out</span>
@@ -253,41 +246,31 @@
           <div class="location">
             <p>
               <i class="fas fa-map-marker-alt"></i
-              ><span>F. Pertanian Rd., Brawijaya University</span>
+              ><span>Jl. Moch. Sruji No.193, RT.003/RW.02, Cangkring, Patrang, Kec. Patrang, Kabupaten Jember, Jawa Timur 68111</span>
             </p>
-            <p><i class="fab fa-instagram"></i><span>@tanie_kopi</span></p>
+            <p><i class="fab fa-instagram"></i><span>@jemberplayzone</span></p>
             <p>
               <i class="fas fa-phone-square-alt"></i
-              ><span>+62 856 5414 1926</span>
+              ><span>+62 8123 4621 62 </span>
             </p>
           </div>
         </div>
         <div class="middle">
-          <h2>Tani Kopi</h2>
-          <p class="desc">A Sip of Tradition, A Taste of Perfection</p>
+          <h2>PlayZone</h2>
+          <p class="desc">Your Adventure, Your PlayStation</p>
           <div class="social">
-            <a href="#" target="_blank" rel="nofollow external"
+            <a href="https://www.facebook.com/playzonejaya" target="_blank" rel="nofollow external"
               ><i class="fab fa-facebook-f"></i
             ></a>
-            <a href="#" target="_blank" rel="nofollow external"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a href="#" target="_blank" rel="nofollow external"
+            <a href="https://www.instagram.com/playzonepatrang?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="nofollow external"
               ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="#" target="_blank" rel="nofollow external"
-              ><i class="fab fa-tiktok"></i
-            ></a>
-            <a href="#" target="_blank" rel="nofollow external"
-              ><i class="fab fa-youtube"></i
             ></a>
           </div>
         </div>
         <div class="right">
           <h3>Working Hours</h3>
           <div class="work-hours">
-            <p><span>Mon - Fri</span><span>7.00 AM - 4.00 PM</span></p>
-            <p><span>Sat - Sun</span><span>12.00 AM - 4.00 PM</span></p>
+            <p><span>Mon - Sun</span><span>7.00 AM - 4.00 AM</span></p>
           </div>
         </div>
       </div>

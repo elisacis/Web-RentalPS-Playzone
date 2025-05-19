@@ -25,7 +25,7 @@ section h2.sec-title {
   font-size: 1rem;
   padding: 10px 40px 8px;
   background: var(--primary);
-  color: white;
+  color: rgb(255, 255, 255);    /*btn read & see hal.index*/
   border-radius: 88px;
   border: 1px solid var(--primary);
 }
@@ -54,7 +54,7 @@ section h2.sec-title {
   z-index: -1;
   height: 100%;
   width: 100%;
-  background: url(../../assets/site/Hero-bg.png);
+  background: url(../../assets/site/Hero-bg.jpg);
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -82,7 +82,7 @@ section h2.sec-title {
   cursor: pointer;
   backdrop-filter: blur(10px);
   font-size: 110%;
-  color: #fff;
+  color: #fff;  /*btn order halaman index*/
   background: #ffffff3d;
   display: inline-block;
   padding: 15px 50px 10px;
@@ -285,7 +285,7 @@ section h2.sec-title {
     padding: 20px;
     background: var(--primary);
     color: white;
-    background: linear-gradient(135deg, #523b27, #8a6a4eb0);
+    background: linear-gradient(135deg, #523b27, #8a6a4eb0); 
   }
 
   #cup .item-text img {
